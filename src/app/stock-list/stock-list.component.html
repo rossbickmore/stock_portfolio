@@ -5,4 +5,12 @@
   </label>
   <button (click)="getStock(searchTerm)">submit</button>
 </div>
-<p>stock {{stock}}</p>
+
+<p>Symbol {{stock.name}} / {{stock.symbol}}</p>
+<p>stock {{stock.price}}</p>
+<button (click)="addToPortfolio()">Add to portfolio</button>
+
+<div *ngFor="let stock of portfolio">
+  <p>Symbol {{stock.name}} / {{stock.symbol}}</p>
+  <p>stock {{stock.price}}</p>
+</div>

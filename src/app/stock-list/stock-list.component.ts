@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StockService } from '../stock.service'
+import { Stock } from '../stock'
 
 @Component({
   selector: 'stock-list',
@@ -8,15 +9,27 @@ import { StockService } from '../stock.service'
 })
 export class StockListComponent implements OnInit {
   searchTerm: string
-  stock: any
+  stock: Stock
+  portfolio: Stock[] = []
+  
   constructor(private stockService: StockService) { }
 
   ngOnInit() {
   }
 
   getStock(searchTerm: string) {
-    this.stockService.getStock(searchTerm).subscribe(val => this.stock = val.price.regularMarketTime)
-    return this.stock
+    this.stockService
+      .getStock(searchTerm)
+      .subscribe(response => 
+        this.stock = {
+          name: response.price.shortName,
+          symbol: response.symbol,
+          price: response.price.regularMarketTime
+        }
+      )
   }
-
+  addToPortfolio() {
+    this.portfolio.push(this.stock)
+    console.log(this.portfolio)
+  }
 }
