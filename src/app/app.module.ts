@@ -3,14 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { HttpClientModule }    from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { StockListComponent } from './stock-list/stock-list.component';
+
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  declarations: [
+    AppComponent,
+    StockListComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

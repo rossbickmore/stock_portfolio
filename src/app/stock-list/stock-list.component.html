@@ -1,0 +1,8 @@
+<p>stock-list works!</p>
+<div>
+  <label>name:
+    <input [(ngModel)]="searchTerm" placeholder="searchTerm"/>
+  </label>
+  <button (click)="getStock(searchTerm)">submit</button>
+</div>
+<p>stock {{stock}}</p>
