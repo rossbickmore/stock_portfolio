@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule }    from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { StockListComponent } from './stock-list/stock-list.component';
+import { StockDisplayComponent } from './stock-display/stock-display.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { StockListComponent } from './stock-list/stock-list.component';
   ],
   declarations: [
     AppComponent,
-    StockListComponent
+    StockListComponent,
+    StockDisplayComponent
   ],
   bootstrap: [AppComponent]
 })
