@@ -14,3 +14,9 @@
   <p>Symbol {{stock.name}} / {{stock.symbol}}</p>
   <p>stock {{stock.price}}</p>
 </div>
+
+<div *ngFor="let symbol of symbols">
+  <button (click)=getStock(symbol.symbol)>
+    <p>{{symbol.name}}</p>
+  </button>
+</div>

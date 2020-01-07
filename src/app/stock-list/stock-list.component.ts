@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StockService } from '../stock.service'
 import { Stock } from '../stock'
+import { SYMBOLS } from '../stock-symbol-list'
 
 @Component({
   selector: 'stock-list',
@@ -11,7 +12,8 @@ export class StockListComponent implements OnInit {
   searchTerm: string
   stock: Stock
   portfolio: Stock[] = []
-  
+  symbols = SYMBOLS
+
   constructor(private stockService: StockService) { }
 
   ngOnInit() {
@@ -30,6 +32,5 @@ export class StockListComponent implements OnInit {
   }
   addToPortfolio() {
     this.portfolio.push(this.stock)
-    console.log(this.portfolio)
   }
 }
