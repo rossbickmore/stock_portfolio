@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Stock } from '../stock'
-import { StockService} from '../stock.service'
 
 @Component({
   selector: 'stock-display',
@@ -13,7 +12,7 @@ export class StockDisplayComponent implements OnInit {
 
   @Input() stock: Stock;
 
-  constructor(private stockService: StockService) { }
+  constructor() { }
 
   ngOnInit() {
   }

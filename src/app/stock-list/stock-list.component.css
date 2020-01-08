@@ -1,0 +1,39 @@
+.stock-btn-container {
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  padding: 12px;
+}
+
+.stock-btn {
+  width: 30%;
+  background-color: #3fb9c5;
+  color: white;
+  padding: 3px;
+  text-align: center;
+  cursor: pointer;
+  margin: 8px;
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 1s;
+}
+
+.stock-btn:hover {
+  filter: brightness(120%)
+}
+
+.search-container {
+  width: 100%;
+  display: flex;
+}
+.btn {
+  background-color: #3fb9c5;
+  transition: 1s;
+}
+
+.btn:hover {
+  filter: brightness(120%)
+}

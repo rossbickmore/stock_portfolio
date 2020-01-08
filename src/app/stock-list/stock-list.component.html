@@ -1,23 +1,35 @@
-<p>stock-list works!</p>
-<div>
-  <label>name:
-    <input [(ngModel)]="searchTerm" placeholder="searchTerm"/>
-  </label>
-  <button (click)="getStock(searchTerm)">submit</button>
-</div>
+<div class="row">
 
-<div *ngFor="let stock of portfolio">
-  <p>Symbol {{stock.name}} / {{stock.symbol}}</p>
-  <p>stock {{stock.price}}</p>
-</div>
+  <div class="col-sm-12 col-md-6">
+    <div class="content-container">
+      <div class="header">
+        <h2>Pick your stocks </h2>
+        <hr>
+      </div>
+      <div class="stock-btn-container">
+        <div *ngFor="let symbol of symbols" (click)="getStock(symbol.symbol)" class="stock-btn">
+          {{symbol.name}}
+        </div>
+      </div>
+      <div class="search-container">
+        <input class="form-control" aria-label="Search" [(ngModel)]="searchTerm" placeholder="search for a stock e.g. APPL"/>
+        <button (click)="getStock(searchTerm)" class="btn btn-info">search</button>
+      </div>
+    </div>
+  </div>
 
-<div *ngFor="let symbol of symbols">
-  <button (click)=getStock(symbol.symbol)>
-    <p>{{symbol.name}}</p>
-  </button>
+  <div class="col-sm-12 col-md-6">
+    <div class="content-container">
+      <div class="header">
+        <h2>Key performance information</h2>
+        <hr>
+      </div>
+      <div *ngIf="stock">
+        <stock-display
+          [stock]="stock"
+        >
+        </stock-display>
+      </div>
+    </div>
+  </div>
 </div>
-
-<stock-display
-  [stock]="stock"
->
-</stock-display>

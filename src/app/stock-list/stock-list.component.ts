@@ -11,9 +11,9 @@ import { SYMBOLS } from '../stock-symbol-list'
 export class StockListComponent implements OnInit {
   searchTerm: string
   stock: Stock
-  portfolio: Stock[] = []
   symbols = SYMBOLS
-
+  stockData: any
+  
   constructor(private stockService: StockService) { }
 
   ngOnInit() {
@@ -29,8 +29,5 @@ export class StockListComponent implements OnInit {
           price: response.price.regularMarketTime
         }
       )
-  }
-  addToPortfolio() {
-    this.portfolio.push(this.stock)
   }
 }

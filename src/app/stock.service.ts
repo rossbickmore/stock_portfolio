@@ -21,9 +21,8 @@ export class StockService {
   };
 
 
-  getStock(searchTerm: string) {
+  getStock(searchTerm: string): Observable<any> {
     const url = `${this.stockUrl}${searchTerm}`;
-    console.log(url)
-    return this.http.get(url,this.httpOptions)
+    return this.http.get<any>(url,this.httpOptions)
   }
 }

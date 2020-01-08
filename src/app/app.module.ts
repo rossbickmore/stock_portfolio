@@ -8,16 +8,20 @@ import { FormsModule } from '@angular/forms';
 import { StockListComponent } from './stock-list/stock-list.component';
 import { StockDisplayComponent } from './stock-display/stock-display.component';
 
+import { AlertModule } from 'ngx-bootstrap';
+
+
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AlertModule.forRoot()
   ],
   declarations: [
     AppComponent,
     StockListComponent,
-    StockDisplayComponent
+    StockDisplayComponent,
   ],
   bootstrap: [AppComponent]
 })
