@@ -16,10 +16,9 @@ html {
 }
 
 .content-container {
-  height: 70vmin;
+  height: 80vmin;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 hr {

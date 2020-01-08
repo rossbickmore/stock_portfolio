@@ -10,7 +10,7 @@ export class StockService {
 
   constructor(private http: HttpClient) { }
     
-  private stockUrl = `https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?region=US&lang=en&symbol=`; 
+  private stockUrl = `https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary?region=US&symbol=`; 
 
   httpOptions = {
     headers: new HttpHeaders({ 

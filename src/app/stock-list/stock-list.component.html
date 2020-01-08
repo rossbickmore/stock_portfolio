@@ -6,30 +6,49 @@
         <h2>Pick your stocks </h2>
         <hr>
       </div>
+      <div class="search-container">
+        <input class="form-control" aria-label="Search" [(ngModel)]="searchTerm" placeholder="search for a stock e.g. APPL"/>
+        <button (click)="getStock(searchTerm)" class="btn btn-info">search</button>
+      </div>
       <div class="stock-btn-container">
         <div *ngFor="let symbol of symbols" (click)="getStock(symbol.symbol)" class="stock-btn">
           {{symbol.name}}
         </div>
       </div>
-      <div class="search-container">
-        <input class="form-control" aria-label="Search" [(ngModel)]="searchTerm" placeholder="search for a stock e.g. APPL"/>
-        <button (click)="getStock(searchTerm)" class="btn btn-info">search</button>
+      <div class=header>
+        <h2>Current picks</h2>
+        <ng-container *ngIf="portfolio.length == 0">
+          <p>No picks yet..</p>
+        </ng-container>
+        <div class="stock-btn-container">
+          <div *ngFor="let stock of portfolio" class="stock-btn active">
+            {{stock.name}}
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <ngx-spinner>
 
+  </ngx-spinner>
   <div class="col-sm-12 col-md-6">
     <div class="content-container">
       <div class="header">
         <h2>Key performance information</h2>
         <hr>
       </div>
-      <ngx-spinner></ngx-spinner>
       <ng-container *ngIf="stock">
-        <stock-display
-          [stock]="stock"
-        >
-        </stock-display>
+        <div class="stock-card">
+          <div class="stock-header">
+            <h2>{{stock.name}}({{stock.symbol}})</h2>
+            <button (click)="addToPortfolio()" class="btn btn-success">Add to portfolio</button>
+          </div>
+          <p>Price Per Share: ${{stock.price}}</p>
+          <p>{{stock.sector}} ({{stock.industry}})</p>
+          <p>Rated as {{stock.recommendation }}</p>
+          <a href="{{stock.website}}">{{stock.website}}</a>
+          <p>{{stock.description}}</p>
+        </div>
       </ng-container>
     </div>
   </div>

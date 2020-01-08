@@ -14,6 +14,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class StockListComponent implements OnInit {
   searchTerm: string
   stock: Stock
+  portfolio: Stock[] = []
   symbols = SYMBOLS
   stockData: any
   loading: boolean
@@ -35,12 +36,21 @@ export class StockListComponent implements OnInit {
       this.spinner.hide();
     })
     this.source$
-      .subscribe(response => 
+      .subscribe(res => 
         this.stock = {
-          name: response.price.shortName,
-          symbol: response.symbol,
-          price: response.price.regularMarketTime
+          name: res.quoteType.shortName,
+          symbol: res.quoteType.symbol,
+          price: res.summaryDetail.previousClose.raw,
+          sector: res.summaryProfile.sector,
+          industry: res.summaryProfile.industry,
+          description: res.summaryProfile.longBusinessSummary,
+          recommendation: res.financialData.recommendationKey,
+          website: res.summaryProfile.website
         }
       )
+  }
+
+  addToPortfolio() {
+    this.portfolio.push(this.stock)
   }
 }
