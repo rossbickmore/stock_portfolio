@@ -10,18 +10,22 @@ import { StockDisplayComponent } from './stock-display/stock-display.component';
 
 import { AlertModule } from 'ngx-bootstrap';
 
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
     StockListComponent,
-    StockDisplayComponent,
+    StockDisplayComponent
   ],
   bootstrap: [AppComponent]
 })

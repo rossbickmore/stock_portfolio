@@ -9,7 +9,7 @@ import { Stock } from '../stock'
 export class StockDisplayComponent implements OnInit {
 
   portfolio: Stock[] = []
-
+  
   @Input() stock: Stock;
 
   constructor() { }

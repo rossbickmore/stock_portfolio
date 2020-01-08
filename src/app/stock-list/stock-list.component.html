@@ -24,12 +24,13 @@
         <h2>Key performance information</h2>
         <hr>
       </div>
-      <div *ngIf="stock">
+      <ngx-spinner></ngx-spinner>
+      <ng-container *ngIf="stock">
         <stock-display
           [stock]="stock"
         >
         </stock-display>
-      </div>
+      </ng-container>
     </div>
   </div>
 </div>
