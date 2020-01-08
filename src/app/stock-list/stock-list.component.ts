@@ -3,6 +3,7 @@ import { StockService } from '../stock.service'
 import { Stock } from '../stock'
 import { SYMBOLS } from '../stock-symbol-list'
 import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
 import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
@@ -20,14 +21,15 @@ export class StockListComponent implements OnInit {
   
   constructor(
     private stockService: StockService,
-    private spinner: NgxSpinnerService) { }
+    private spinner: NgxSpinnerService
+  ) { }
 
   ngOnInit() {
   }
 
   getStock(searchTerm: string) {
     this.spinner.show()
-    this.source$ = this.stockService.getStock(searchTerm)
+    this.source$ = this.stockService.getStock(searchTerm).pipe(share())
     this.source$
     .subscribe( val => {
       this.spinner.hide();
