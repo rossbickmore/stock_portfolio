@@ -14,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import {MatAutocompleteModule} from '@angular/material/autocomplete'
 
+import { AppRoutingModule }     from './app-routing.module';
+import { StockDisplayComponent } from './stock-display/stock-display.component';
+import { PortfolioDisplayComponent } from './portfolio-display/portfolio-display.component';
 
 @NgModule({
   imports: [
@@ -24,11 +27,14 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete'
     NgxSpinnerModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
-    StockListComponent
+    StockListComponent,
+    StockDisplayComponent,
+    PortfolioDisplayComponent
   ],
   bootstrap: [AppComponent]
 })

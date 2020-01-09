@@ -21,42 +21,18 @@
           {{stock.name}}
         </div>
       </div>
-      <div class=header>
-        <h2>Current picks</h2>
-        <hr>
-        <div class="stock-btn-container">
-          <ng-container *ngIf="portfolio.length == 0">
-            <p>No picks yet..</p>
-          </ng-container>
-          <div *ngFor="let stock of portfolio" class="stock-btn active">
-            {{stock.name}}
-          </div>
-        </div>
-      </div>
+      <portfolio-display>
+      </portfolio-display>
     </div>
   </div>
   <ngx-spinner>
 
   </ngx-spinner>
   <div class="col-sm-12 col-md-6">
-    <div class="content-container">
-      <div class="header">
-        <h2>Key performance information</h2>
-        <hr>
-      </div>
-      <ng-container *ngIf="stock">
-        <div class="stock-card">
-          <div class="stock-header">
-            <h2>{{stock.name}}({{stock.symbol}})</h2>
-            <button (click)="addToPortfolio()" class="btn btn-success">Add to portfolio</button>
-          </div>
-          <p>Price Per Share: ${{stock.price}}</p>
-          <p>{{stock.sector}} ({{stock.industry}})</p>
-          <p>Rated as {{stock.recommendation }}</p>
-          <a href="{{stock.website}}">{{stock.website}}</a>
-          <p>{{stock.description}}</p>
-        </div>
-      </ng-container>
-    </div>
+    <stock-display
+    [stock]="stock"    
+    >
+    </stock-display
+    >
   </div>
 </div>

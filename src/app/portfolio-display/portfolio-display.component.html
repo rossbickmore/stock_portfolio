@@ -1,0 +1,9 @@
+<div class=header>
+  <h2>Current picks</h2>
+  <hr>
+  <div class="stock-btn-container">
+    <div *ngFor="let stock of portfolio" class="stock-btn active">
+      {{stock.name}}
+    </div>
+  </div>
+</div>

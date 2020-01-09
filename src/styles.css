@@ -27,3 +27,89 @@ hr {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.stock-btn-container {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.stock-btn {
+  width: 30%;
+  background-color: #3fb9c5;
+  color: white;
+  padding: 3px;
+  text-align: center;
+  cursor: pointer;
+  margin: 8px;
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 1s;
+}
+
+.stock-btn.active {
+  background-color: black;
+}
+
+.stock-btn:hover {
+  filter: brightness(120%)
+}
+
+.stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-container {
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+form {
+  width: 80%;
+}
+
+.btn-info {
+  background-color: #3fb9c5;
+  transition: 1s;
+}
+
+.btn:hover {
+  filter: brightness(120%)
+}
+
+.stock-card {
+  min-height: 50%;
+  padding: 20px;
+}
+
+.btn-success {
+  transition: 1s;
+  height: 40px;
+  padding: 4px;
+}
+
+.btn-success:hover {
+  filter: brightness(140%);
+}
+
+.portfolio-container {
+  display: flex;
+  background-color: #e6e6e6;
+  width: 100%;
+  height: 50px;
+}
+
+.stock-card {
+  width: auto;
+  padding: 20px;
+  overflow: scroll;
+}

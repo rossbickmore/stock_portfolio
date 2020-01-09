@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Stock } from './stock'
 
 @Injectable({
   providedIn: 'root'
 })
 export class StockService {
+  portfolio: Stock[] = []
 
   constructor(private http: HttpClient) { }
     
@@ -24,5 +26,14 @@ export class StockService {
   getStock(searchTerm: string): Observable<any> {
     const url = `${this.stockUrl}${searchTerm}`;
     return this.http.get<any>(url,this.httpOptions)
+  }
+
+  addToPortfolio(stock: Stock) {
+    console.log('HELLO')
+    return this.portfolio.push(stock)
+  }
+
+  getPortfolio() {
+    return this.portfolio
   }
 }

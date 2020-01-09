@@ -1,0 +1,19 @@
+<div class="content-container">
+  <div class="header">
+    <h2>Key performance information</h2>
+    <hr>
+  </div>
+  <ng-container *ngIf="stock">
+    <div class="stock-card">
+      <div class="stock-header">
+        <h2>{{stock.name}}({{stock.symbol}})</h2>
+        <button (click)="addToPortfolio()" class="btn btn-success">Add to portfolio</button>
+      </div>
+      <p>Price Per Share: ${{stock.price}}</p>
+      <p>{{stock.sector}} ({{stock.industry}})</p>
+      <p>Rated as {{stock.recommendation }}</p>
+      <a href="{{stock.website}}">{{stock.website}}</a>
+      <p>{{stock.description}}</p>
+    </div>
+  </ng-container>
+</div>

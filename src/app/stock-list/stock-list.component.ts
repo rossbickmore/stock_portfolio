@@ -11,12 +11,9 @@ import {startWith, map} from 'rxjs/operators';
 @Component({
   selector: 'stock-list',
   templateUrl: './stock-list.component.html',
-  styleUrls: ['./stock-list.component.css']
 })
 export class StockListComponent implements OnInit {
-  searchTerm: string
-  stock: Stock
-  portfolio: Stock[] = []
+  searchTerm: string = "AAPL"
   exampleStocks = STOCKS
   stockData: any
   loading: boolean
@@ -24,6 +21,7 @@ export class StockListComponent implements OnInit {
   symbols: string[] = SYMBOLS
   control = new FormControl();
   filteredSymbols: Observable<string[]>
+  stock: Stock
 
   constructor(
     private stockService: StockService,
@@ -35,6 +33,7 @@ export class StockListComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
+    this.getStock(this.searchTerm)
   }
 
   private _filter(value: string): string[] {
@@ -64,7 +63,4 @@ export class StockListComponent implements OnInit {
       )
   }
 
-  addToPortfolio() {
-    this.portfolio.push(this.stock)
-  }
 }
