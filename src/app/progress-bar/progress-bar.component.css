@@ -1,0 +1,11 @@
+.bar__track {
+  height: 2px;
+  background: #e6e6e6;
+  margin: 12px 0;
+}
+
+.bar__value {
+  background: #3fb9c5;
+  display: block;
+  height: 100%;
+}

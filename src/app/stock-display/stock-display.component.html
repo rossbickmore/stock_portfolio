@@ -7,7 +7,7 @@
     <div class="stock-card">
       <div class="stock-header">
         <h2>{{stock.name}}({{stock.symbol}})</h2>
-        <button (click)="addToPortfolio()" class="btn btn-success">Add to portfolio</button>
+        <div (click)="addToPortfolio()" class="btn primary">Add to portfolio</div>
       </div>
       <p>Price Per Share: ${{stock.price}}</p>
       <p>{{stock.sector}} ({{stock.industry}})</p>

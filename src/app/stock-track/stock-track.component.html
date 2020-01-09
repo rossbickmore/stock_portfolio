@@ -1,12 +1,25 @@
 <div class="row">
   <div class="col-sm-12 col-md-6">
     <div class="content-container">
+      <div class="header">
+        <h2>Select a metric</h2>
+        <hr>
+      </div>
+      <div class="btn-container">
+        <div *ngFor="let option of options" class="btn" (click)="setOption(option)" [ngClass]="selectedOption == option ? 'active' : 'secondary'">
+          {{option.english}}
+        </div>
+      </div>
       <table class="data_table">
-          <tr>
-            <td> data</td>
-            <td></td>
-            <td></td>
-          </tr>
+        <tr *ngFor="let stock of filteredStocks">
+          <td>{{stock.name}}</td>
+          <td>
+            <progress-bar
+            [valueToAchieve]="maxValue"
+            [currentValue]="stock.value"
+            ></progress-bar>
+          </td>
+        </tr>
       </table>
     </div>
   </div>

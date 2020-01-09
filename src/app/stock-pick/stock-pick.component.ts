@@ -7,7 +7,6 @@ import { share } from 'rxjs/operators';
 import { NgxSpinnerService } from "ngx-spinner";
 import {FormControl} from '@angular/forms';
 import {startWith, map} from 'rxjs/operators';
-import { NavbarService } from '../navbar.service';
 
 @Component({
   selector: 'stock-pick',
@@ -55,6 +54,8 @@ export class StockPickComponent implements OnInit {
           name: res.quoteType.shortName,
           symbol: res.quoteType.symbol,
           price: res.summaryDetail.previousClose.raw,
+          profitMargin: res.financialData.profitMargins.raw,
+          returnOnEquity: res.financialData.returnOnEquity.raw,
           sector: res.summaryProfile.sector,
           industry: res.summaryProfile.industry,
           description: res.summaryProfile.longBusinessSummary,

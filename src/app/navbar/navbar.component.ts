@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarService} from '../navbar.service'
 import { faHandPointer, faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
@@ -8,13 +7,11 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent implements OnInit {
-  activePage 
   faHandPointer = faHandPointer
   faChevronRight = faChevronRight;
   faChevronDown = faChevronDown;
-  constructor(private navbarService: NavbarService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.activePage = this.navbarService.getActivePage()
   }
 }

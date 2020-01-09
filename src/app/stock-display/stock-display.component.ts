@@ -15,6 +15,6 @@ export class StockDisplayComponent implements OnInit {
   }
 
   addToPortfolio() {
-    return this.stockService.addToPortfolio(this.stock)
+    this.stockService.addToPortfolio(this.stock)
   }
 }

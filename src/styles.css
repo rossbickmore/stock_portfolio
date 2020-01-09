@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,600');
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
 hr {
   border: 1px solid #e6e6e6;
   margin: 0;
@@ -31,7 +33,7 @@ h1, h2, h3 {
 }
 
 
-.stock-btn-container {
+.btn-container {
   display: flex;
   flex-flow: row wrap;
   padding: 12px;
@@ -39,7 +41,7 @@ h1, h2, h3 {
   align-items: center;
 }
 
-.stock-btn {
+.btn {
   width: 30%;
   background-color: #3fb9c5;
   color: white;
@@ -55,12 +57,21 @@ h1, h2, h3 {
   transition: 1s;
 }
 
-.stock-btn.active {
+.btn.active {
   background-color: black;
 }
 
-.stock-btn:hover {
-  filter: brightness(120%)
+.btn.primary {
+  background-color:#28a745
+}
+
+.btn.secondary {
+  background-color: grey;
+}
+
+.btn:hover {
+  filter: brightness(120%);
+  color: white;;
 }
 
 .stock-header {
@@ -167,13 +178,14 @@ a:hover {
 
 th {
   color: white;
-  background-color: #3fb9c5;
+  background-color: black;
   padding: 12px;
   text-align: center;
 }
 
 td, tr {
   border: 1px solid #e6e6e6; 
+  width: 50%;
   padding: 12px;
   text-align: center;
 }

@@ -15,8 +15,8 @@
           </mat-autocomplete>
         </form>
       </div>
-      <div class="stock-btn-container">
-        <div *ngFor="let stock of exampleStocks" (click)="getStock(stock.symbol)" class="stock-btn">
+      <div class="btn-container">
+        <div *ngFor="let stock of exampleStocks" (click)="getStock(stock.symbol)" class="btn">
           {{stock.name}}
         </div>
       </div>
