@@ -29,10 +29,13 @@ export class StockService {
   }
 
   addToPortfolio(stock: Stock) {
-    return this.portfolio.push(stock)
+    this.portfolio.push(stock)
+    localStorage.setItem('portfolio', JSON.stringify(this.portfolio))
   }
 
   getPortfolio() {
+    this.portfolio = JSON.parse(localStorage.getItem('portfolio'))
+    console.log(this.portfolio)
     return this.portfolio
   }
 }
