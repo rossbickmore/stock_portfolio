@@ -4,13 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule }    from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StockListComponent } from './stock-list/stock-list.component';
 
 import { AlertModule } from 'ngx-bootstrap';
 
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
+import {MatAutocompleteModule} from '@angular/material/autocomplete'
+
 
 @NgModule({
   imports: [
@@ -19,7 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     FormsModule,
     AlertModule.forRoot(),
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule
   ],
   declarations: [
     AppComponent,

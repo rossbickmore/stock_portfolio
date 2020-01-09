@@ -7,20 +7,27 @@
         <hr>
       </div>
       <div class="search-container">
-        <input class="form-control" aria-label="Search" [(ngModel)]="searchTerm" placeholder="search for a stock e.g. APPL"/>
-        <button (click)="getStock(searchTerm)" class="btn btn-info">search</button>
+        <form>
+          <input type="text" class="form-control" placeholder="Search for a stock by smymbol e.g. APPL" [formControl]="control" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let symbol of filteredSymbols | async" [value]="symbol" (onSelectionChange)="getStock(symbol)">
+              {{symbol}}
+            </mat-option>
+          </mat-autocomplete>
+        </form>
       </div>
       <div class="stock-btn-container">
-        <div *ngFor="let symbol of symbols" (click)="getStock(symbol.symbol)" class="stock-btn">
-          {{symbol.name}}
+        <div *ngFor="let stock of exampleStocks" (click)="getStock(stock.symbol)" class="stock-btn">
+          {{stock.name}}
         </div>
       </div>
       <div class=header>
         <h2>Current picks</h2>
-        <ng-container *ngIf="portfolio.length == 0">
-          <p>No picks yet..</p>
-        </ng-container>
+        <hr>
         <div class="stock-btn-container">
+          <ng-container *ngIf="portfolio.length == 0">
+            <p>No picks yet..</p>
+          </ng-container>
           <div *ngFor="let stock of portfolio" class="stock-btn active">
             {{stock.name}}
           </div>

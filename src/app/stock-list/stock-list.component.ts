@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { StockService } from '../stock.service'
 import { Stock } from '../stock'
-import { SYMBOLS } from '../stock-symbol-list'
+import { STOCKS, SYMBOLS } from '../stock-symbol-list'
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { NgxSpinnerService } from "ngx-spinner";
+import {FormControl} from '@angular/forms';
+import {startWith, map} from 'rxjs/operators';
 
 @Component({
   selector: 'stock-list',
@@ -15,20 +17,32 @@ export class StockListComponent implements OnInit {
   searchTerm: string
   stock: Stock
   portfolio: Stock[] = []
-  symbols = SYMBOLS
+  exampleStocks = STOCKS
   stockData: any
   loading: boolean
   source$: Observable<any>
-  
+  symbols: string[] = SYMBOLS
+  control = new FormControl();
+  filteredSymbols: Observable<string[]>
+
   constructor(
     private stockService: StockService,
     private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
+    this.filteredSymbols = this.control.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+  }
+
+  private _filter(value: string): string[] {
+    return this.symbols.filter(symbol => symbol.includes(value));
   }
 
   getStock(searchTerm: string) {
+    console.log(searchTerm)
     this.spinner.show()
     this.source$ = this.stockService.getStock(searchTerm).pipe(share())
     this.source$
