@@ -7,6 +7,7 @@ import { share } from 'rxjs/operators';
 import { NgxSpinnerService } from "ngx-spinner";
 import {FormControl} from '@angular/forms';
 import {startWith, map} from 'rxjs/operators';
+import { NavbarService } from '../navbar.service';
 
 @Component({
   selector: 'stock-pick',
@@ -25,7 +26,7 @@ export class StockPickComponent implements OnInit {
 
   constructor(
     private stockService: StockService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit() {

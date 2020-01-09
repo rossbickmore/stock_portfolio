@@ -1,27 +1,4 @@
 <div class="container">
-  <nav class="navbar">
-    <a routerLink="/stockpick" (click)="displayPick()">
-      <div [ngClass]="[activePage == 'pick' ? 'nav-item' : 'nav-item inactive']">
-        <ng-container *ngIf="activePage == 'pick'">
-          <fa-icon class="icon" [icon]="faChevronDown"></fa-icon>
-        </ng-container>
-        <ng-container *ngIf="activePage !== 'pick'">
-          <fa-icon class="icon" [icon]="faChevronRight"></fa-icon>
-        </ng-container>
-        <h2>Pick stocks</h2>
-      </div>
-    </a>
-    <a routerLink="/track" (click)="displayTrack()">
-      <div [ngClass]="[activePage == 'track' ? 'nav-item' : 'nav-item inactive']">
-        <ng-container *ngIf="activePage == 'track'">
-          <fa-icon class="icon" [icon]="faChevronDown"></fa-icon>
-        </ng-container>
-        <ng-container *ngIf="activePage !== 'track'">
-          <fa-icon class="icon" [icon]="faChevronRight"></fa-icon>
-        </ng-container>
-        <h2>Track stocks</h2>
-      </div>
-    </a>
-  </nav>
+  <navbar></navbar>
   <router-outlet></router-outlet>
 </div>

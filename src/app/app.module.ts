@@ -20,6 +20,8 @@ import { PortfolioDisplayComponent } from './portfolio-display/portfolio-display
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StockTrackComponent } from './stock-track/stock-track.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
 
 @NgModule({
   imports: [
@@ -39,7 +41,8 @@ import { StockTrackComponent } from './stock-track/stock-track.component';
     StockPickComponent,
     StockDisplayComponent,
     PortfolioDisplayComponent,
-    StockTrackComponent
+    StockTrackComponent,
+    NavbarComponent
   ],
   bootstrap: [AppComponent]
 })
