@@ -29,7 +29,6 @@ export class StockService {
   }
 
   addToPortfolio(stock: Stock) {
-    console.log('HELLO')
     return this.portfolio.push(stock)
   }
 

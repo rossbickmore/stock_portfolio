@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,600');
+hr {
+  border: 1px solid #e6e6e6;
+  margin: 0;
+}
+html, body { height: 100%; }
 
 html {
   font-family: 'Nunito';
@@ -8,6 +13,10 @@ html {
   padding: 0;
   font-size: 14px;
   line-height: 25px;
+}
+
+h1, h2, h3 {
+  margin: 4px 4px;
 }
 
 .header {
@@ -21,12 +30,6 @@ html {
   flex-direction: column;
 }
 
-hr {
-  border: 1px solid #e6e6e6;
-  margin: 0;
-}
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .stock-btn-container {
   display: flex;
@@ -112,4 +115,40 @@ form {
   width: auto;
   padding: 20px;
   overflow: scroll;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none !important;
+  color: black;
+  width: 100%;
+}
+
+.nav-item {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3fb9c5;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.icon {
+  margin-right: 24px;
+}
+
+.nav-item.inactive {
+  background-color: #e6e6e6;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
 }

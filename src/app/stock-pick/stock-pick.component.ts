@@ -9,10 +9,10 @@ import {FormControl} from '@angular/forms';
 import {startWith, map} from 'rxjs/operators';
 
 @Component({
-  selector: 'stock-list',
-  templateUrl: './stock-list.component.html',
+  selector: 'stock-pick',
+  templateUrl: './stock-pick.component.html',
 })
-export class StockListComponent implements OnInit {
+export class StockPickComponent implements OnInit {
   searchTerm: string = "AAPL"
   exampleStocks = STOCKS
   stockData: any

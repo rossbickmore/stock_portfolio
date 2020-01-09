@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule }    from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StockListComponent } from './stock-list/stock-list.component';
+import { StockPickComponent } from './stock-pick/stock-pick.component';
 
 import { AlertModule } from 'ngx-bootstrap';
 
@@ -18,6 +18,9 @@ import { AppRoutingModule }     from './app-routing.module';
 import { StockDisplayComponent } from './stock-display/stock-display.component';
 import { PortfolioDisplayComponent } from './portfolio-display/portfolio-display.component';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StockTrackComponent } from './stock-track/stock-track.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -28,13 +31,15 @@ import { PortfolioDisplayComponent } from './portfolio-display/portfolio-display
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   declarations: [
     AppComponent,
-    StockListComponent,
+    StockPickComponent,
     StockDisplayComponent,
-    PortfolioDisplayComponent
+    PortfolioDisplayComponent,
+    StockTrackComponent
   ],
   bootstrap: [AppComponent]
 })

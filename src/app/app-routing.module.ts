@@ -1,11 +1,13 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { StockListComponent }   from './stock-list/stock-list.component';
+import { StockPickComponent }   from './stock-pick/stock-pick.component';
+import { StockTrackComponent} from './stock-track/stock-track.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/stockpick', pathMatch: 'full' },
-  { path: 'stockpick', component: StockListComponent }
+  { path: 'stockpick', component: StockPickComponent },
+  { path: 'track', component: StockTrackComponent }
 ];
 
 @NgModule({
