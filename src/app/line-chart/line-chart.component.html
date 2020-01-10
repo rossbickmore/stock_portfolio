@@ -1,6 +1,6 @@
 <div class="btn-container">
   <div *ngFor="let option of options" class="btn" (click)="setOption(option)" [ngClass]="selectedOption == option ? 'active' : 'secondary'">
-    {{option}}
+    {{option}} ($ - billion)
   </div>
 </div>
 <div class="chart-wrapper">
