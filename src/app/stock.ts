@@ -9,4 +9,5 @@ export class Stock {
   description: string;
   recommendation: string;
   website: string;
+  earnings: any;
 }

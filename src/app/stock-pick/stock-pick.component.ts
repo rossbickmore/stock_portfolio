@@ -35,11 +35,11 @@ export class StockPickComponent implements OnInit {
     );
     this.getStock(this.searchTerm)
   }
-
+  
   private _filter(value: string): string[] {
     return this.symbols.filter(symbol => symbol.includes(value));
   }
-
+  
   getStock(searchTerm: string) {
     console.log(searchTerm)
     this.spinner.show()
@@ -49,20 +49,22 @@ export class StockPickComponent implements OnInit {
       this.spinner.hide();
     })
     this.source$
-      .subscribe(res => 
-        this.stock = {
-          name: res.quoteType.shortName,
-          symbol: res.quoteType.symbol,
-          price: res.summaryDetail.previousClose.raw,
-          profitMargin: res.financialData.profitMargins.raw,
-          returnOnEquity: res.financialData.returnOnEquity.raw,
-          sector: res.summaryProfile.sector,
-          industry: res.summaryProfile.industry,
-          description: res.summaryProfile.longBusinessSummary,
-          recommendation: res.financialData.recommendationKey,
-          website: res.summaryProfile.website
-        }
+    .subscribe(res => 
+      this.stock = {
+        name: res.quoteType.shortName,
+        symbol: res.quoteType.symbol,
+        price: res.summaryDetail.previousClose.raw,
+        profitMargin: res.financialData.profitMargins.raw,
+        returnOnEquity: res.financialData.returnOnEquity.raw,
+        sector: res.summaryProfile.sector,
+        industry: res.summaryProfile.industry,
+        description: res.summaryProfile.longBusinessSummary,
+        recommendation: res.financialData.recommendationKey,
+        website: res.summaryProfile.website,
+        earnings: res.earnings.financialsChart.yearly
+      }
       )
+      console.log(this.stock)
   }
 
 }

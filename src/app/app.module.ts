@@ -23,6 +23,8 @@ import { StockTrackComponent } from './stock-track/stock-track.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
+import { LineChartComponent } from './line-chart/line-chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   imports: [
@@ -35,7 +37,8 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     ReactiveFormsModule,
     MatAutocompleteModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ChartsModule
   ],
   declarations: [
     AppComponent,
@@ -44,7 +47,8 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     PortfolioDisplayComponent,
     StockTrackComponent,
     NavbarComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    LineChartComponent
   ],
   bootstrap: [AppComponent]
 })
