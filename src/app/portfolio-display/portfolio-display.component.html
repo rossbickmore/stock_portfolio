@@ -1,9 +1,16 @@
 <div class=header>
   <h2>Current picks</h2>
   <hr>
+</div>
   <div class="btn-container">
     <div *ngFor="let stock of portfolio" class="btn active">
       {{stock.name}}
     </div>
+    <ng-container *ngIf="portfolio.length == 0">
+      <p>your portfolio is empty</p>
+    </ng-container>
   </div>
+  <hr>
+<div class="btn danger" (click)="deletePortfolio()">
+  Remove stocks
 </div>

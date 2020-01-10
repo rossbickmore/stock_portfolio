@@ -70,9 +70,16 @@ h1, h2, h3 {
 }
 
 .btn:hover {
-  filter: brightness(120%);
+  filter: brightness(130%);
   color: white;;
 }
+
+.btn.danger {
+  background-color: red;
+  width: 100%;
+}
+
+
 
 .stock-header {
   display: flex;

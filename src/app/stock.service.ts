@@ -9,7 +9,7 @@ import { Stock } from './stock'
 })
 export class StockService {
   portfolio: Stock[] = []
-
+  
   constructor(private http: HttpClient) { }
     
   private stockUrl = `https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary?region=US&symbol=`; 
@@ -34,8 +34,15 @@ export class StockService {
   }
 
   getPortfolio() {
-    this.portfolio = JSON.parse(localStorage.getItem('portfolio'))
-    console.log(this.portfolio)
+    if (localStorage.getItem('portfolio') !== null) {
+      this.portfolio = JSON.parse(localStorage.getItem('portfolio'))
+    }
     return this.portfolio
+  }
+
+  deletePortfolio() {
+    console.log("hello world")
+    window.localStorage.removeItem('portfolio')
+    this.portfolio = []
   }
 }
