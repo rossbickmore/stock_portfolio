@@ -717,7 +717,6 @@ let StockPickComponent = class StockPickComponent {
         return this.symbols.filter(symbol => symbol.includes(value));
     }
     getStock(searchTerm) {
-        console.log(searchTerm);
         this.spinner.show();
         this.source$ = this.stockService.getStock(searchTerm).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["share"])());
         this.source$
@@ -823,7 +822,6 @@ let StockTrackComponent = class StockTrackComponent {
             obj.value = stock[metric];
             this.filteredStocks.push(obj);
         });
-        console.log(this.filteredStocks);
         return this.filteredStocks;
     }
     findTheMaxValue(metric, array) {
@@ -888,7 +886,7 @@ let StockService = class StockService {
     }
     getPortfolio() {
         this.portfolio = JSON.parse(localStorage.getItem('portfolio'));
-        console.log(this.portfolio);
+        (this.portfolio);
         return this.portfolio;
     }
 };

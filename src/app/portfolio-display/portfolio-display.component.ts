@@ -15,8 +15,8 @@ export class PortfolioDisplayComponent implements OnInit {
   }
 
   deletePortfolio() {
-    console.log("hello world")
+    console.log('delete')
     this.stockService.deletePortfolio()
-    this.portfolio = []
+    this.portfolio = this.stockService.getPortfolio()
   }
 }

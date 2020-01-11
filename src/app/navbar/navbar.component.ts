@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   faChevronRight = faChevronRight;
   faChevronDown = faChevronDown;
   constructor() { }
-
+  
   ngOnInit() {
   }
 }

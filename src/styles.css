@@ -144,8 +144,18 @@ form {
 
 a {
   text-decoration: none !important;
-  color: black;
+  color: white;
   width: 100%;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited { 
+  text-decoration: none;
+  color: white;
 }
 
 .nav-item.active {
@@ -156,6 +166,10 @@ a {
   background-color: #3fb9c5;
   color: white;
   font-size: 1.5rem;
+}
+
+.nav-item:visited {
+  color: white;
 }
 
 .icon {
@@ -172,10 +186,6 @@ a {
   font-size: 1.5rem;
 }
 
-a:hover {
-  text-decoration: none;
-  color: white;
-}
 
 .data_table {
   width: 100%;

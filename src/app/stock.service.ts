@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
 import { Stock } from './stock'
+import { AuthService } from './auth.service'
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { Stock } from './stock'
 export class StockService {
   portfolio: Stock[] = []
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
     
   private stockUrl = `https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary?region=US&symbol=`; 
 
@@ -30,18 +30,20 @@ export class StockService {
 
   addToPortfolio(stock: Stock) {
     this.portfolio.push(stock)
+    this.authService.hasPortfolio = true
     localStorage.setItem('portfolio', JSON.stringify(this.portfolio))
   }
 
   getPortfolio() {
     if (localStorage.getItem('portfolio') !== null) {
+      this.authService.hasPortfolio = true
       this.portfolio = JSON.parse(localStorage.getItem('portfolio'))
     }
     return this.portfolio
   }
 
   deletePortfolio() {
-    console.log("hello world")
+    this.authService.hasPortfolio = false
     window.localStorage.removeItem('portfolio')
     this.portfolio = []
   }
