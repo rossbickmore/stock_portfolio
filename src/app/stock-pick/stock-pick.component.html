@@ -1,5 +1,12 @@
 <div class="row">
   <div class="col-sm-12 col-md-6">
+    <stock-display
+    [stock]="stock"    
+    >
+    </stock-display
+    >
+  </div>
+  <div class="col-sm-12 col-md-6">
     <div class="content-container">
       <div class="header">
         <h2>Pick your stocks </h2>
@@ -26,11 +33,4 @@
   </div>
   <ngx-spinner>
   </ngx-spinner>
-  <div class="col-sm-12 col-md-6">
-    <stock-display
-    [stock]="stock"    
-    >
-    </stock-display
-    >
-  </div>
 </div>
