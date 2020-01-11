@@ -27,7 +27,6 @@ h1, h2, h3 {
 }
 
 .content-container {
-  height: 80vmin;
   display: flex;
   flex-direction: column;
 }
@@ -42,10 +41,10 @@ h1, h2, h3 {
 }
 
 .btn {
-  width: 30%;
+  min-width: 30%;
   background-color: #3fb9c5;
   color: white;
-  padding: 3px;
+  padding: 6px;
   text-align: center;
   cursor: pointer;
   margin: 8px;
