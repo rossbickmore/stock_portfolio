@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { StockService } from "../../../stock.service";
-import { Stock } from "../../../stock";
+import { StockService } from "../../services/stock.service";
+import { Stock } from "../../stock";
 
 @Component({
   selector: "portfolio-display",

@@ -5,12 +5,17 @@ import { AuthGuard } from "./auth.guard";
 
 const routes: Routes = [
   {
+    path: "",
+    loadChildren: "./stock-pick/stock-pick.module#StockPickModule"
+  },
+  {
     path: "stockpick",
-    loadChildren: "./modules/stock-pick/stock-pick.module#StockPickModule"
+    loadChildren: "./stock-pick/stock-pick.module#StockPickModule"
   },
   {
     path: "stocktrack",
-    loadChildren: "./modules/stock-track/stock-track.module#StockTrackModule",
+    loadChildren: "./stock-track/stock-track.module#StockTrackModule",
+    canActivate: [AuthGuard]
   }
 ];
 

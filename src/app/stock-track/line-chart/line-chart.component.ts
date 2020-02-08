@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
-import { StockService} from '../../../stock.service'
-import {Stock} from '../../../stock'
+import { StockService} from '../../services/stock.service'
+import {Stock} from '../../stock'
 @Component({
   selector: 'line-chart',
   templateUrl: './line-chart.component.html',

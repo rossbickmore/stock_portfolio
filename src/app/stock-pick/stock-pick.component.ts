@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StockService } from '../../stock.service'
-import { Stock } from '../../stock'
-import { STOCKS, SYMBOLS } from '../../stock-symbol-list'
+import { StockService } from '../services/stock.service'
+import { Stock } from '../stock'
+import { STOCKS, SYMBOLS } from '../stock-symbol-list'
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { NgxSpinnerService } from "ngx-spinner";
