@@ -16,13 +16,11 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { AppRoutingModule } from "./app-routing.module";
 
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { StockTrackComponent } from "./stock-track/stock-track.component";
 import { NavbarComponent } from "./navbar/navbar.component";
-import { ProgressBarComponent } from "./progress-bar/progress-bar.component";
 
-import { LineChartComponent } from "./line-chart/line-chart.component";
 import { ChartsModule } from "ng2-charts";
 import { StockPickModule} from './modules/stock-pick/stock-pick.module'
+import { StockTrackModule} from './modules/stock-track/stock-track.module'
 
 @NgModule({
   imports: [
@@ -37,14 +35,12 @@ import { StockPickModule} from './modules/stock-pick/stock-pick.module'
     AppRoutingModule,
     FontAwesomeModule,
     ChartsModule,
-    StockPickModule
+    StockPickModule,
+    StockTrackModule
   ],
   declarations: [
     AppComponent,
-    StockTrackComponent,
     NavbarComponent,
-    ProgressBarComponent,
-    LineChartComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { StockPickComponent } from "./modules/stock-pick/stock-pick.component";
-
 import { AuthGuard } from "./auth.guard";
 
 const routes: Routes = [
@@ -10,7 +8,10 @@ const routes: Routes = [
     path: "stockpick",
     loadChildren: "./modules/stock-pick/stock-pick.module#StockPickModule"
   },
-  { path: "", component: StockPickComponent, canActivate: [AuthGuard] }
+  {
+    path: "stocktrack",
+    loadChildren: "./modules/stock-track/stock-track.module#StockTrackModule",
+  }
 ];
 
 @NgModule({
