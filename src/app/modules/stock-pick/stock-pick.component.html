@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-sm-12 col-md-6">
+    <stock-display
+    [stock]="stock"    
+    >
+    </stock-display
+    >
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <div class="content-container">
+      <div class="header">
+        <h2>Pick your stocks</h2>
+        <hr />
+      </div>
+      <div class="search-container">
+        <form>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search for a stock by smymbol e.g. APPL"
+            [formControl]="control"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let symbol of filteredSymbols | async"
+              [value]="symbol"
+              (onSelectionChange)="getStock(symbol)"
+            >
+              {{ symbol }}
+            </mat-option>
+          </mat-autocomplete>
+        </form>
+      </div>
+      <div class="btn-container">
+        <div
+          *ngFor="let stock of exampleStocks"
+          (click)="getStock(stock.symbol)"
+          class="btn"
+        >
+          {{ stock.name }}
+        </div>
+      </div>
+      <portfolio-display> </portfolio-display>
+    </div>
+  </div>
+  <ngx-spinner> </ngx-spinner>
+  <div class="col-sm-12 col-md-6">
+    <stock-display [stock]="stock"> </stock-display>
+  </div>
+</div>
