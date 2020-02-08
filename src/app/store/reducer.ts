@@ -13,7 +13,7 @@ export interface ApplicationState {
 }
 
 export let initialState = {
-  selectedSearchTerm: "",
+  selectedSearchTerm: "hello",
   searchTerms: SEARCH_TERMS,
   selectedStock: undefined,
   data: undefined,
@@ -25,7 +25,7 @@ export let initialState = {
 export function appReducer( state = initialState, { type, payload } ) {
   switch( type ) {
     case actions.SELECT_SEARCH_TERM:
-      return Object.assign({}, state, {selectedStock: payload})
+      return Object.assign({}, state, {selectedSearchTerm: payload})
     case actions.GET_STOCK:
       return Object.assign({}, state, {loading: true, error: null})
     case actions.GET_STOCK_SUCCESS:

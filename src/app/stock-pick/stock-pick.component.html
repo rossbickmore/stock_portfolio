@@ -6,6 +6,9 @@
     </stock-display
     >
   </div>
+  <div *ngIf="selectedSearchTerm$ | async; let selectedSearchTerm">
+    <p>Search term: {{ selectedSearchTerm.name}}</p>
+  </div>
   <div class="col-sm-12 col-md-6">
     <div class="content-container">
       <div class="header">
@@ -15,7 +18,7 @@
       <div class="btn-container">
         <div
           *ngFor="let searchTerm of searchTerms$ | async"
-          (click)="selectSearchTerm(selectedSearchTerm)"
+          (click)="selectSearchTerm(searchTerm)"
           class="btn"
         >
           {{ searchTerm.name }}

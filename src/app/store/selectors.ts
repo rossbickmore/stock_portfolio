@@ -8,3 +8,8 @@ export const getSearchTerms = createSelector(
   getApplicationState,
   state => state.searchTerms
 );
+
+export const getSelectedSearchTerm = createSelector(
+  getApplicationState,
+  state => state.selectedSearchTerm
+);

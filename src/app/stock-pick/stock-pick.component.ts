@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service'
 import { Stock } from '../models/stock'
 import { SearchTerm } from '../models/search-term'
+
 import { select, Store } from '@ngrx/store';
 import { ApplicationState } from '../store/reducer'
-import { getSearchTerms } from '../store/selectors'
+import { getSearchTerms, getSelectedSearchTerm } from '../store/selectors'
+import * as actions from '../store/actions'
 
 import { Observable } from 'rxjs'
 
@@ -14,20 +16,19 @@ import { Observable } from 'rxjs'
 })
 export class StockPickComponent implements OnInit {
   
-  selectedSearchTerm: SearchTerm
+  selectedSearchTerm$: Observable<SearchTerm>
   searchTerms$: Observable<SearchTerm[]>
 
   constructor(
     private store: Store<any>
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.searchTerms$ =this.store.pipe(select(getSearchTerms))
   }
-  
-  
-  getStock(searchTerm: string) {
-   console.log('hello')
-  }
 
+  selectSearchTerm(searchTerm: SearchTerm): void {
+    this.store.dispatch( new actions.selectSearchTerm(searchTerm))
+    this.selectedSearchTerm$ = this.store.pipe(select(getSelectedSearchTerm))
+  }
 }
