@@ -2,14 +2,11 @@
   <div class="col-sm-12 col-md-6">
     <stock-display
     [stock]="stock"    
+    [isLoading]="isLoading$ | async"
     >
     </stock-display
     >
   </div>
-  <div *ngIf="selectedSearchTerm$ | async; let selectedSearchTerm">
-    <p>Search term: {{ selectedSearchTerm.name}}</p>
-  </div>
-  <p>{{isLoading$ | async }}</p>
   <div class="col-sm-12 col-md-6">
     <div class="content-container">
       <div class="header">
@@ -28,5 +25,4 @@
       <portfolio-display> </portfolio-display>
     </div>
   </div>
-  <ngx-spinner> </ngx-spinner>
 </div>

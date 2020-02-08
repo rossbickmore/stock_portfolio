@@ -6,7 +6,7 @@ import {Stock} from '../../stock'
 @Component({
   selector: 'line-chart',
   templateUrl: './line-chart.component.html',
-  styleUrls: ['./line-chart.component.css']
+  styleUrls: ['./line-chart.component.scss']
 })
 export class LineChartComponent implements OnInit {
 

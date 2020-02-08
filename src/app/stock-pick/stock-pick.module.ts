@@ -5,26 +5,19 @@ import { StockDisplayComponent } from "./stock-display/stock-display.component";
 import { PortfolioDisplayComponent } from "./portfolio-display/portfolio-display.component";
 import { StockPickComponent } from "./stock-pick.component";
 
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
-import { NgxSpinnerModule } from "ngx-spinner";
-
-import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { SpinnerComponent } from './spinner/spinner.component' 
 
 
 @NgModule({
   imports: [
     CommonModule,
     routing,
-    FormsModule,
-    NgxSpinnerModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
   ],
   declarations: [
     StockPickComponent,
     StockDisplayComponent,
-    PortfolioDisplayComponent
+    PortfolioDisplayComponent,
+    SpinnerComponent
   ]
 })
 export class StockPickModule {}

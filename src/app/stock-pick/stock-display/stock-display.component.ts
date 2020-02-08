@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { DataService } from "../../services/data.service";
-import { Stock } from "../../stock";
 
 @Component({
   selector: "stock-display",
@@ -8,11 +7,8 @@ import { Stock } from "../../stock";
 })
 export class StockDisplayComponent implements OnInit {
   constructor(private stockService: DataService) {}
-  @Input() stock: Stock;
-
+  @Input() stock;
+  @Input() isLoading: boolean;
   ngOnInit() {}
 
-  addToPortfolio() {
-    this.stockService.addToPortfolio(this.stock);
-  }
 }
