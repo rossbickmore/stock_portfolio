@@ -1,4 +1,4 @@
-export const STOCKS = [
+export const SEARCH_TERMS = [
   { id: 1, name: 'Microsoft Corporation', symbol: "MSFT" },
   { id: 2, name: 'Apple', symbol: "AAPL" },
   { id: 3, name: 'Amazon.com', symbol: "AMZN" },

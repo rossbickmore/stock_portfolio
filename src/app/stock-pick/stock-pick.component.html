@@ -12,33 +12,13 @@
         <h2>Pick your stocks</h2>
         <hr />
       </div>
-      <div class="search-container">
-        <form>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Search for a stock by smymbol e.g. APPL"
-            [formControl]="control"
-            [matAutocomplete]="auto"
-          />
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option
-              *ngFor="let symbol of filteredSymbols | async"
-              [value]="symbol"
-              (onSelectionChange)="getStock(symbol)"
-            >
-              {{ symbol }}
-            </mat-option>
-          </mat-autocomplete>
-        </form>
-      </div>
       <div class="btn-container">
         <div
-          *ngFor="let stock of exampleStocks"
-          (click)="getStock(stock.symbol)"
+          *ngFor="let searchTerm of searchTerms$ | async"
+          (click)="selectSearchTerm(selectedSearchTerm)"
           class="btn"
         >
-          {{ stock.name }}
+          {{ searchTerm.name }}
         </div>
       </div>
       <portfolio-display> </portfolio-display>
