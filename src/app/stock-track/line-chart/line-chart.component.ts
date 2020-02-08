@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
-import { StockService} from '../../services/stock.service'
+import { DataService} from '../../services/data.service'
 import {Stock} from '../../stock'
 @Component({
   selector: 'line-chart',
@@ -16,7 +16,7 @@ export class LineChartComponent implements OnInit {
 
   portfolio: Stock[] = this.stockService.getPortfolio()
   constructor(
-    private stockService: StockService
+    private stockService: DataService
   ) { }
   options = ['earnings', 'revenue']
   selectedOption = this.options[0]
@@ -31,7 +31,6 @@ export class LineChartComponent implements OnInit {
     // get chart labels
     this.lineChartData = []
     this.lineChartLabels = []
-    console.log(option, array)
     array[0].earnings.forEach( dataPoint => {
       this.lineChartLabels.push(dataPoint.date)
     })

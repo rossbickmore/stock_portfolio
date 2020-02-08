@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StockService } from '../services/stock.service'
+import { DataService } from '../services/data.service'
 import { Stock } from '../stock'
 import { STOCKS, SYMBOLS } from '../stock-symbol-list'
 import { Observable } from 'rxjs';
@@ -24,7 +24,7 @@ export class StockPickComponent implements OnInit {
   stock: Stock
 
   constructor(
-    private stockService: StockService,
+    private stockService: DataService,
     private spinner: NgxSpinnerService,
   ) { }
 
@@ -41,7 +41,6 @@ export class StockPickComponent implements OnInit {
   }
   
   getStock(searchTerm: string) {
-    console.log(searchTerm)
     this.spinner.show()
     this.source$ = this.stockService.getStock(searchTerm).pipe(share())
     this.source$
@@ -64,7 +63,6 @@ export class StockPickComponent implements OnInit {
         earnings: res.earnings.financialsChart.yearly
       }
       )
-      console.log(this.stock)
   }
 
 }

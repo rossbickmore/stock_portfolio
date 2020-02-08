@@ -7,7 +7,7 @@ import { AuthService } from '../auth.service'
 @Injectable({
   providedIn: 'root'
 })
-export class StockService {
+export class DataService {
   portfolio: Stock[] = []
   
   constructor(private http: HttpClient, private authService: AuthService) { }

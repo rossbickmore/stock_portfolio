@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "stock-portfolio"
+  "defaultProject": "stock-portfolio",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

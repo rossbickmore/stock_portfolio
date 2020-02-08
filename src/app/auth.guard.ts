@@ -13,12 +13,10 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
     let url: string = state.url;
-    console.log(url)
     return this.checkThereIsAPortfolio(url);
   }
   
   checkThereIsAPortfolio(url: string)  {
-    console.log(this.authService.hasPortfolio)
     if (this.authService.hasPortfolio) { 
       return true; 
     }
