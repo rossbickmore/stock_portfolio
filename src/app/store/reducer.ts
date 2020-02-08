@@ -7,7 +7,7 @@ export interface ApplicationState {
   selectedSearchTerm: SearchTerm,
   searchTerms: SearchTerm[],
   stockSelected: Stock,
-  data: Stock[],
+  data: undefined,
   loading: boolean,
   error: any
 }
@@ -16,7 +16,7 @@ export let initialState = {
   selectedSearchTerm: "hello",
   searchTerms: SEARCH_TERMS,
   selectedStock: undefined,
-  data: undefined,
+  data: "hello",
   loading: false,
   error: null
 }
@@ -29,9 +29,9 @@ export function appReducer( state = initialState, { type, payload } ) {
     case actions.GET_STOCK:
       return Object.assign({}, state, {loading: true, error: null})
     case actions.GET_STOCK_SUCCESS:
-      return Object.assign({}, state, {data: payload, pending: false})
+      return Object.assign({}, state, {data: payload, loading: false})
     case actions.GET_STOCK_ERROR:
-      return Object.assign({}, state, {pending: false, error: "Error"})
+      return Object.assign({}, state, {loading: false, error: "Error"})
     default:
       return state;
   }

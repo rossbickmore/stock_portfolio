@@ -14,4 +14,13 @@ export class selectSearchTerm {
   constructor(public payload: SearchTerm) {}
 }
 
-export type All = getStock | selectSearchTerm;
+export class getStockSuccess{
+  readonly type = GET_STOCK_SUCCESS
+  constructor(public payload: any) {}
+}
+
+export class getStockError{
+  readonly type = GET_STOCK_ERROR
+}
+
+export type All = getStock | selectSearchTerm | getStockSuccess | getStockError;

@@ -16,6 +16,10 @@ import { DataService } from './services/data.service'
 import { StoreModule } from "@ngrx/store";
 import { appReducer } from './store/reducer';
 
+import { EffectsModule } from '@ngrx/effects';
+
+import { AppEffects } from './store/effects'
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,7 +27,8 @@ import { appReducer } from './store/reducer';
     AppRoutingModule,
     StockPickModule,
     StockTrackModule,
-    StoreModule.forRoot({applicationState: appReducer})
+    StoreModule.forRoot({applicationState: appReducer}),
+    EffectsModule.forRoot([AppEffects])
   ],
   declarations: [
     AppComponent,

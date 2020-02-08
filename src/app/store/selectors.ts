@@ -13,3 +13,13 @@ export const getSelectedSearchTerm = createSelector(
   getApplicationState,
   state => state.selectedSearchTerm
 );
+
+export const getIsLoading = createSelector(
+  getApplicationState,
+  state => state.loading
+);
+
+export const getData = createSelector(
+  getApplicationState,
+  state => state.data
+);

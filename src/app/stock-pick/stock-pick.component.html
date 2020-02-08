@@ -9,6 +9,7 @@
   <div *ngIf="selectedSearchTerm$ | async; let selectedSearchTerm">
     <p>Search term: {{ selectedSearchTerm.name}}</p>
   </div>
+  <p>{{isLoading$ | async }}</p>
   <div class="col-sm-12 col-md-6">
     <div class="content-container">
       <div class="header">
