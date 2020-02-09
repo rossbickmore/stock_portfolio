@@ -1,4 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import { Stock } from '../../models/stock'
+
+import { Observable } from 'rxjs'
+import { select, Store } from '@ngrx/store';
+import { ApplicationState } from '../../store/reducer'
+import { getPortfolio } from '../../store/selectors'
+import * as actions from '../../store/actions'
 
 @Component({
   selector: "portfolio-display",
@@ -6,6 +13,8 @@ import { Component, OnInit } from "@angular/core";
 })
 export class PortfolioDisplayComponent implements OnInit {
   constructor() {}
+  
+  @Input() portfolio$: Observable<Stock[]>
 
   ngOnInit() {
   }

@@ -23,3 +23,8 @@ export const getData = createSelector(
   getApplicationState,
   state => state.data
 );
+
+export const getPortfolio = createSelector(
+  getApplicationState,
+  state => state.portfolio
+);

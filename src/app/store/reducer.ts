@@ -7,16 +7,18 @@ export interface ApplicationState {
   selectedSearchTerm: SearchTerm,
   searchTerms: SearchTerm[],
   stockSelected: Stock,
+  portfolio: Stock[],
   data: undefined,
   loading: boolean,
   error: any
 }
 
 export let initialState = {
-  selectedSearchTerm: "hello",
+  selectedSearchTerm: undefined,
   searchTerms: SEARCH_TERMS,
   selectedStock: undefined,
-  data: "hello",
+  portfolio: [],
+  data: undefined,
   loading: false,
   error: null
 }
@@ -32,6 +34,8 @@ export function appReducer( state = initialState, { type, payload } ) {
       return Object.assign({}, state, {data: payload, loading: false})
     case actions.GET_STOCK_ERROR:
       return Object.assign({}, state, {loading: false, error: "Error"})
+    case actions.ADD_STOCK_TO_PORTFOLIO:
+      return Object.assign({}, state, {portfolio: [...state.portfolio, payload]})
     default:
       return state;
   }

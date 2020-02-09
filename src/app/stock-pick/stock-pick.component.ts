@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service'
 import { Stock } from '../models/stock'
 import { SearchTerm } from '../models/search-term'
 
 import { select, Store } from '@ngrx/store';
 import { ApplicationState } from '../store/reducer'
-import { getSearchTerms, getSelectedSearchTerm, getIsLoading, getData } from '../store/selectors'
+import { getSearchTerms, getSelectedSearchTerm, getIsLoading, getData, getPortfolio } from '../store/selectors'
 import * as actions from '../store/actions'
 
 import { Observable } from 'rxjs'
@@ -20,14 +19,16 @@ export class StockPickComponent implements OnInit {
   searchTerms$: Observable<SearchTerm[]>
   isLoading$: Observable<boolean>
   stock: any
-  data: any
+  portfolio$: Observable<Stock[]>
+  
   constructor(
     private store: Store<ApplicationState>
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.searchTerms$ = this.store.pipe(select(getSearchTerms))
     this.isLoading$ = this.store.pipe(select(getIsLoading))
+    this.portfolio$ = this.store.pipe(select(getPortfolio))
   }
 
   selectSearchTerm(searchTerm: SearchTerm): void {
@@ -51,4 +52,9 @@ export class StockPickComponent implements OnInit {
       }
     )
   }
+
+  addToPortfolio(): void {
+    this.store.dispatch( new actions.addStockToPortfolio(this.stock))
+  }
+
 }

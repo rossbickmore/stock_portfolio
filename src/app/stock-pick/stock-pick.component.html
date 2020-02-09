@@ -22,7 +22,10 @@
           {{ searchTerm.name }}
         </div>
       </div>
-      <portfolio-display> </portfolio-display>
+      <portfolio-display 
+        [portfolio$]="portfolio$"
+      >
+      </portfolio-display>
     </div>
   </div>
 </div>
