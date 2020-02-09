@@ -26,6 +26,7 @@ export class StockPickComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.selectSearchTerm({ id: 8, name: 'VISA', symbol: "V" })
     this.searchTerms$ = this.store.pipe(select(getSearchTerms))
     this.isLoading$ = this.store.pipe(select(getIsLoading))
     this.portfolio$ = this.store.pipe(select(getPortfolio))
@@ -33,7 +34,6 @@ export class StockPickComponent implements OnInit {
 
   selectSearchTerm(searchTerm: SearchTerm): void {
     this.store.dispatch( new actions.selectSearchTerm(searchTerm))
-    this.selectedSearchTerm$ = this.store.pipe(select(getSelectedSearchTerm))
     this.isLoading$ = this.store.pipe(select(getIsLoading))
     this.store.dispatch( new actions.getStock())
     this.store.pipe(select(getData)).subscribe(res => 
@@ -51,10 +51,6 @@ export class StockPickComponent implements OnInit {
         earnings: res.earnings.financialsChart.yearly
       }
     )
-  }
-
-  addToPortfolio(): void {
-    this.store.dispatch( new actions.addStockToPortfolio(this.stock))
   }
 
 }

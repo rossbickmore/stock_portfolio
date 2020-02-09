@@ -27,7 +27,7 @@ import { AppEffects } from './store/effects'
     AppRoutingModule,
     StockPickModule,
     StockTrackModule,
-    StoreModule.forRoot({applicationState: appReducer}),
+    StoreModule.forRoot({applicationState: appReducer},),
     EffectsModule.forRoot([AppEffects])
   ],
   declarations: [

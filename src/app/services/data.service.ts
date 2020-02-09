@@ -19,7 +19,6 @@ export class DataService {
 
   getStock(searchTerm: string): Observable<any> {
     const url = `${this.stockUrl}${searchTerm}`;
-    console.log(searchTerm)
     return this.http.get<any>(url,this.httpOptions)
   }
 }

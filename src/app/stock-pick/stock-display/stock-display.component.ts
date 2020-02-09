@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 
 import { select, Store } from '@ngrx/store';
 import { ApplicationState } from '../../store/reducer'
@@ -7,14 +7,16 @@ import * as actions from '../../store/actions'
 
 @Component({
   selector: "stock-display",
-  templateUrl: "./stock-display.component.html"
+  templateUrl: "./stock-display.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StockDisplayComponent implements OnInit {
-  constructor(private store: Store<ApplicationState>) {}
+  constructor(private store: Store<ApplicationState>, private cdr: ChangeDetectorRef) {}
   @Input() stock;
   @Input() isLoading: boolean;
-  ngOnInit() {}
-
+  ngOnInit() {
+  }
+  
   addToPortfolio() {
     this.store.dispatch( new actions.addStockToPortfolio(this.stock))
   }
