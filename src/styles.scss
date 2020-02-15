@@ -21,11 +21,6 @@ h1, h2, h3 {
   margin: 4px 4px;
 }
 
-.header {
-  text-align: center;
-  padding: 5px;
-}
-
 .page-container {
   height: 100vh;
   width: 1000px;
@@ -35,142 +30,38 @@ h1, h2, h3 {
 }
 
 
-.btn-container {
-  display: flex;
-  flex-flow: row wrap;
-  padding: 12px;
-  justify-content: center;
-  align-items: center;
-}
-
 .btn {
-  background-color: #3fb9c5;
-  color: white;
-  padding: 6px;
-  text-align: center;
-  cursor: pointer;
-  margin: 8px;
-  border-radius: 10px;
-  height: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transition: 1s;
-}
-
-.btn.active {
-  background-color: black;
-}
-
-.btn.primary {
-  background-color:#28a745
-}
-
-.btn.secondary {
-  background-color: grey;
+  background-color: rgb(172, 169, 169);
+  color: black;
+  border-radius: 0px !important;
+  margin-right: 12px !important;
 }
 
 .btn:hover {
-  filter: brightness(130%);
-  color: white;;
+  background-color: rgb(214, 213, 213);
 }
 
-.btn.danger {
-  background-color: red;
-  width: 100%;
+.btn.selected {
+  background-color: rgb(214, 213, 213);
 }
-
-
-
-.stock-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.search-container {
-  width: 100%;
-  display: flex;
-  margin-top: 20px;
-  justify-content: center;
-}
-
-form {
-  width: 80%;
-}
-
-.btn-info {
-  background-color: #3fb9c5;
-  transition: 1s;
-}
-
-.btn:hover {
-  filter: brightness(120%)
-}
-
-.stock-card {
-  min-height: 50%;
-  padding: 20px;
-}
-
-.btn-success {
-  transition: 1s;
-  height: 40px;
-  padding: 4px;
-}
-
-.btn-success:hover {
-  filter: brightness(140%);
-}
-
-.portfolio-container {
-  display: flex;
-  background-color: #e6e6e6;
-  width: 100%;
-  height: 50px;
-}
-
-.stock-card {
-  padding: 20px;
-  overflow: scroll;
-}
-
-a {
-  text-decoration: none !important;
-  color: white;
-  width: 100%;
-}
-
-a:hover {
-  text-decoration: none;
-  color: white;
-}
-
-a:visited { 
-  text-decoration: none;
-  color: white;
-}
-
-
-.icon {
-  margin-right: 24px;
-}
-
-
-.data_table {
-  width: 100%;
-  border: 1px solid #e6e6e6;
-  border-collapse: collapse;
-}
-
 
 .example-form {
   min-width: 150px;
   max-width: 500px;
   margin-left: 16px;
 }
+.datatable {
+  width: 100%;
+  color: white;
+}
 
+tr, td {
+  padding: 12px;
+}
 
+tr {
+  text-align: center;
+}
 // media queries
 
 @media only screen and (max-width: 600px) {

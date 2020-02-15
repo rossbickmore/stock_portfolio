@@ -14,9 +14,7 @@
         <a href="{{stock.website}}">{{stock.website}}</a>
         <p>{{stock.description}}</p>
       </mat-card-content>
-      <mat-card-footer>
-        <button (click)="addToPortfolio()" mat-button>Add to portfolio</button>
-      </mat-card-footer>
+      <button (click)="addToPortfolio()" class="btn" mat-button>Add to portfolio</button>
     </mat-card>
   </ng-container>
   <ng-container *ngIf="isLoading">

@@ -1,8 +1,10 @@
 <mat-toolbar>
   <p>Current portfolio</p>
 </mat-toolbar>
-<ng-container *ngIf="portfolio$">
-  <button *ngFor="let stock of portfolio$ | async" [style.color]="'white'" mat-button>
-    {{stock.name}}
-  </button>
-</ng-container>
+<mat-card>
+  <ng-container *ngIf="portfolio$">
+    <button *ngFor="let stock of portfolio$ | async" class="btn" mat-button>
+      {{stock.name}}
+    </button>
+  </ng-container>
+</mat-card>

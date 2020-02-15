@@ -19,14 +19,19 @@ export const getSelectedSearchTerm = createSelector(
   state => state.selectedSearchTerm
 );
 
-export const getIsLoading = createSelector(
+export const getConfig = createSelector(
   getApplicationState,
-  state => state.loading
+  state => state.config
+);
+
+export const getIsLoading = createSelector(
+  getConfig,
+  config => config.loading
 );
 
 export const getData = createSelector(
-  getApplicationState,
-  state => state.data
+  getConfig,
+  config => config.data
 );
 
 export const getPortfolio = createSelector(
@@ -34,21 +39,26 @@ export const getPortfolio = createSelector(
   state => state.portfolio
 );
 
-export const getSelectedFilter = createSelector(
+export const getProgressBar = createSelector(
   getApplicationState,
-  state => state.selectedFilter
+  state => state.progressBar
 );
 
-export const getFilters = createSelector(
-  getApplicationState,
-  state => state.filters
+export const getProgressBarSelectedFilter = createSelector(
+  getProgressBar,
+  progressBar => progressBar.selectedFilter
 );
 
-export const getValues = createSelector(
+export const getProgressBarFilters = createSelector(
+  getProgressBar,
+  progressBar => progressBar.filters
+);
+
+export const getProgressBarValues = createSelector(
   getPortfolio,
-  getSelectedFilter,
-  (portfolio, selectFilter) => portfolio.map( (stock) => {
-    return stock[selectFilter]
+  getProgressBarSelectedFilter,
+  (portfolio, selectedFilter) => portfolio.map( (stock) => {
+    return { name: stock.name, value: stock[selectedFilter] }
   })
 );
 

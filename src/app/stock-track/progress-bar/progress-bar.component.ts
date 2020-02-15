@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'progress-bar',
@@ -12,6 +13,7 @@ export class ProgressBarComponent implements OnInit {
 
   ngOnInit() {
   }
+  
   getBarWidth(): number {
     return Math.round(100 * this.currentValue / this.valueToAchieve)
   }

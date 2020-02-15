@@ -3,7 +3,8 @@ export const GET_STOCK_SUCCESS = "GET_STOCK_SUCCESS";
 export const GET_STOCK_ERROR = "GET_STOCK_ERROR";
 export const SELECT_SEARCH_TERM = "SELECT_SEARCH_TERM"
 export const ADD_STOCK_TO_PORTFOLIO = "ADD_STOCK_TO_PORTFOLIO"
-export const SELECT_FILTER = "SELECT_FILTER"
+export const SELECT_PROGRESS_BAR_FILTER = "SELECT_PROGRESS_BAR_FILTER"
+export const SELECT_LINE_CHART_FILTER = "SELECT_LINE_CHART_FILTER"
 
 import { SearchTerm } from '../models/search-term'
 import { Stock } from '../models/stock'
@@ -31,9 +32,15 @@ export class addStockToPortfolio{
   constructor(public payload: Stock) {}
 }
 
-export class selectFilter {
-  readonly type = SELECT_FILTER
+export class selectProgressBarFilter {
+  readonly type = SELECT_PROGRESS_BAR_FILTER
   constructor(public payload: string) {}
 }
 
-export type All = getStock | selectSearchTerm | getStockSuccess | getStockError | addStockToPortfolio | selectFilter;
+export class selectLineChartFilter {
+  readonly type = SELECT_LINE_CHART_FILTER
+  constructor(public payload: string) {}
+}
+
+
+export type All = getStock | selectSearchTerm | getStockSuccess | getStockError | addStockToPortfolio | selectProgressBarFilter | selectLineChartFilter;

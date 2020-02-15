@@ -8,11 +8,19 @@ export interface ApplicationState {
   searchTerms: SearchTerm[],
   selectedStock: Stock,
   portfolio: Stock[],
-  data: undefined,
-  loading: boolean,
-  error: any,
-  selectedFilter: string,
-  filters: string[]
+  config: {
+    data: undefined,
+    loading: boolean,
+    error: any,
+  }
+  progressBar: {
+    selectedFilter: string,
+    filters: string[],
+  },
+  lineChart: {
+    selectedFilter: string,
+    filters: string[],
+  }
 }
 
 
@@ -54,29 +62,39 @@ export let initialState = {
   selectedSearchTerm: undefined,
   searchTerms: SEARCH_TERMS,
   selectedStock: selectedStock,
-  portfolio: [selectedStock, selectedStock],
-  data: undefined,
-  loading: false,
-  error: null,
-  selectedFilter: 'price',
-  filters: ['profitMargin', 'returnOnEquity', 'price']
+  portfolio: [selectedStock, {...selectedStock, price: 100, profitMargin: 0.2, returnOnEquity: 0.8}],
+  config: {
+    data: undefined,
+    loading: false,
+    error: null
+  },
+  progressBar: {
+    selectedFilter: 'price',
+    filters: ['profitMargin', 'returnOnEquity', 'price']
+  },
+  lineChart: {
+    selectedFilter: 'earnings',
+    filters: ['earnings', 'revenues']
+  }
 }
 
 
 export function appReducer( state = initialState, { type, payload } ) {
   switch( type ) {
     case actions.SELECT_SEARCH_TERM:
-      return Object.assign({}, state, {selectedSearchTerm: payload})
+      return {...state, selectedSearchTerm: payload}
     case actions.GET_STOCK:
-      return Object.assign({}, state, {loading: true, error: null})
+      return {...state, config: {loading: true, data: undefined, error: null } }
     case actions.GET_STOCK_SUCCESS:
-      return Object.assign({}, state, {data: payload, loading: false})
+      return {...state, config: {loading: false, data: payload,  error: null }}
     case actions.GET_STOCK_ERROR:
-      return Object.assign({}, state, {loading: false, error: "Error"})
+      return {...state, config: {loading: false, data: undefined,  error: 'error' }}
     case actions.ADD_STOCK_TO_PORTFOLIO:
-      return Object.assign({}, state, {portfolio: [...state.portfolio, payload]})
-    case actions.SELECT_FILTER:
-      return Object.assign({}, state, {selectedFilter: payload})
+      return {...state, portfolio: payload}
+    case actions.SELECT_PROGRESS_BAR_FILTER:
+      return {...state, progressBar: {...state.progressBar, selectedFilter: payload}}
+    case actions.SELECT_LINE_CHART_FILTER:
+      return {...state, lineChart : {...state.lineChart, selectedFilter: payload}}
     default:
       return state;
   }
