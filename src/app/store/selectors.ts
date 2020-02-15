@@ -9,6 +9,11 @@ export const getSearchTerms = createSelector(
   state => state.searchTerms
 );
 
+export const getSelectedStock = createSelector(
+  getApplicationState,
+  state => state.selectedStock
+);
+
 export const getSelectedSearchTerm = createSelector(
   getApplicationState,
   state => state.selectedSearchTerm

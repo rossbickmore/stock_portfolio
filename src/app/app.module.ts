@@ -15,13 +15,20 @@ import { StockPickComponent } from './stock-pick/stock-pick.component';
 import { StockTrackComponent } from './stock-track/stock-track.component';
 import { LineChartComponent } from './stock-track/line-chart/line-chart.component';
 import { ProgressBarComponent } from './stock-track/progress-bar/progress-bar.component';
-
+import {MatTabsModule} from '@angular/material/tabs'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card'
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot({applicationState: appReducer},),
-    EffectsModule.forRoot([AppEffects])
+    EffectsModule.forRoot([AppEffects]),
+    MatTabsModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatCardModule
   ],
   declarations: [
     AppComponent,
@@ -37,3 +44,4 @@ import { ProgressBarComponent } from './stock-track/progress-bar/progress-bar.co
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+``
