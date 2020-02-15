@@ -36,21 +36,21 @@ export class StockPickComponent implements OnInit {
     this.store.dispatch( new actions.selectSearchTerm(searchTerm))
     this.isLoading$ = this.store.pipe(select(getIsLoading))
     this.store.dispatch( new actions.getStock())
-    this.store.pipe(select(getData)).subscribe(res => 
-      this.stock = {
-        name: res.quoteType.shortName,
-        symbol: res.quoteType.symbol,
-        price: res.summaryDetail.previousClose.raw,
-        profitMargin: res.financialData.profitMargins.raw,
-        returnOnEquity: res.financialData.returnOnEquity.raw,
-        sector: res.summaryProfile.sector,
-        industry: res.summaryProfile.industry,
-        description: res.summaryProfile.longBusinessSummary,
-        recommendation: res.financialData.recommendationKey,
-        website: res.summaryProfile.website,
-        earnings: res.earnings.financialsChart.yearly
-      }
-    )
+    // this.store.pipe(select(getData)).subscribe(res => 
+    //   this.stock = {
+    //     name: res.quoteType.shortName,
+    //     symbol: res.quoteType.symbol,
+    //     price: res.summaryDetail.previousClose.raw,
+    //     profitMargin: res.financialData.profitMargins.raw,
+    //     returnOnEquity: res.financialData.returnOnEquity.raw,
+    //     sector: res.summaryProfile.sector,
+    //     industry: res.summaryProfile.industry,
+    //     description: res.summaryProfile.longBusinessSummary,
+    //     recommendation: res.financialData.recommendationKey,
+    //     website: res.summaryProfile.website,
+    //     earnings: res.earnings.financialsChart.yearly
+    //   }
+    // )
   }
 
 }

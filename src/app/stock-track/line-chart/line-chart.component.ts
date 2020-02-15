@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { DataService} from '../../services/data.service'
-import {Stock} from '../../stock'
 @Component({
   selector: 'line-chart',
   templateUrl: './line-chart.component.html',
@@ -14,7 +13,6 @@ export class LineChartComponent implements OnInit {
   lineChartType = 'line';
   lineChartLegend = true;
 
-  portfolio: Stock[] = this.stockService.getPortfolio()
   constructor(
     private stockService: DataService
   ) { }
@@ -24,7 +22,6 @@ export class LineChartComponent implements OnInit {
   lineChartData: ChartDataSets[] = []
   lineChartLabels: Label[] = []
   ngOnInit() {
-    this.createChartData(this.selectedOption, this.portfolio)
   }
 
   createChartData(option, array) {
@@ -50,7 +47,6 @@ export class LineChartComponent implements OnInit {
 
   setOption(option) {
     this.selectedOption = option
-    this.createChartData(this.selectedOption, this.portfolio)
   }
 
 }

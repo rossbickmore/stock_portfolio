@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import {Stock} from '../stock'
 import { select, Store } from '@ngrx/store';
 import { ApplicationState } from '../store/reducer'
 
@@ -20,15 +19,15 @@ export class StockTrackComponent implements OnInit {
   // filteredStocks = this.filterStocksByMetric(this.selectedOption.raw, this.stockService.getPortfolio())
   // maxValue = this.findTheMaxValue(this.selectedOption.raw, this.stockService.getPortfolio())
 
-  // constructor(
-  //   private stockService: DataService,
-  //   private store: Store<any>
-  // ) { }
+  constructor(
+    private stockService: DataService,
+    private store: Store<any>
+  ) { }
 
-  // ngOnInit() {
-  //   this.store.pipe(select('applicationState'))
-  //       .subscribe((appState: ApplicationState) => console.log(appState))
-  // }
+  ngOnInit() {
+    this.store.pipe(select('applicationState'))
+        .subscribe((appState: ApplicationState) => console.log(appState))
+  }
 
   // filterStocksByMetric(metric: string, array: Stock[]) {
   //   this.filteredStocks = []

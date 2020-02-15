@@ -1,38 +1,37 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-
 import { AppComponent } from "./app.component";
-
 import { HttpClientModule } from "@angular/common/http";
-
-import { AppRoutingModule } from "./app-routing.module";
-
-import { NavbarComponent } from "./navbar/navbar.component";
-import { StockPickModule} from './stock-pick/stock-pick.module'
-import { StockTrackModule} from './stock-track/stock-track.module'
-
 import { DataService } from './services/data.service'
-
 import { StoreModule } from "@ngrx/store";
 import { appReducer } from './store/reducer';
-
 import { EffectsModule } from '@ngrx/effects';
 
 import { AppEffects } from './store/effects'
+import { SpinnerComponent } from './stock-pick/spinner/spinner.component';
+import { PortfolioDisplayComponent } from './stock-pick/portfolio-display/portfolio-display.component';
+import { StockDisplayComponent } from './stock-pick/stock-display/stock-display.component';
+import { StockPickComponent } from './stock-pick/stock-pick.component';
+import { StockTrackComponent } from './stock-track/stock-track.component';
+import { LineChartComponent } from './stock-track/line-chart/line-chart.component';
+import { ProgressBarComponent } from './stock-track/progress-bar/progress-bar.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
-    StockPickModule,
-    StockTrackModule,
     StoreModule.forRoot({applicationState: appReducer},),
     EffectsModule.forRoot([AppEffects])
   ],
   declarations: [
     AppComponent,
-    NavbarComponent,
+    StockDisplayComponent,
+    StockPickComponent,
+    StockTrackComponent,
+    LineChartComponent,
+    ProgressBarComponent,
+    SpinnerComponent,
+    PortfolioDisplayComponent,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
