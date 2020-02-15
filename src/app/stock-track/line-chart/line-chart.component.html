@@ -1,7 +1,7 @@
 <div class="btn-container">
-  <div *ngFor="let option of options" class="btn" (click)="setOption(option)" [ngClass]="selectedOption == option ? 'active' : 'secondary'">
+  <button *ngFor="let option of options" (click)="setOption(option)" [ngClass]="selectedOption == option ? 'active' : 'secondary'" mat-button>
     {{option}} ($ - billion)
-  </div>
+  </button>
 </div>
 <div class="chart-wrapper">
   <!-- <canvas baseChart 

@@ -33,3 +33,22 @@ export const getPortfolio = createSelector(
   getApplicationState,
   state => state.portfolio
 );
+
+export const getSelectedFilter = createSelector(
+  getApplicationState,
+  state => state.selectedFilter
+);
+
+export const getFilters = createSelector(
+  getApplicationState,
+  state => state.filters
+);
+
+export const getValues = createSelector(
+  getPortfolio,
+  getSelectedFilter,
+  (portfolio, selectFilter) => portfolio.map( (stock) => {
+    return stock[selectFilter]
+  })
+);
+

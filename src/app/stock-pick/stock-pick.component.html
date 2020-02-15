@@ -4,6 +4,7 @@
     aria-label="Number"
     [formControl]="myControl"
     [matAutocomplete]="auto"
+    [style.color]="'white'"
     matInput>
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -16,3 +17,6 @@
   [isLoading]="isLoading$ | async"
 >
 </stock-display>
+<portfolio-display
+  [portfolio$]="portfolio$"
+></portfolio-display>

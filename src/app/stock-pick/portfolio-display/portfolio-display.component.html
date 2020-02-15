@@ -1,15 +1,8 @@
-<div class=header>
-  <h2>Current picks</h2>
-  <hr>
-</div>
-  <div class="btn-container">
-    <ng-container *ngIf="portfolio$">
-      <div *ngFor="let stock of portfolio$ | async" class="btn active">
-        {{stock.name}}
-      </div>
-    </ng-container>
-  </div>
-  <hr>
-<div class="btn danger" (click)="deletePortfolio()">
-  Remove stocks
-</div>
+<mat-toolbar>
+  <p>Current portfolio</p>
+</mat-toolbar>
+<ng-container *ngIf="portfolio$">
+  <button *ngFor="let stock of portfolio$ | async" [style.color]="'white'" mat-button>
+    {{stock.name}}
+  </button>
+</ng-container>

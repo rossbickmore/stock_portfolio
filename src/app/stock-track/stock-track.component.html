@@ -1,36 +1,23 @@
-<div class="row">
-  <div class="col-sm-12 col-md-6">
-    <div class="content-container">
-      <div class="header">
-        <h2>Snapshot</h2>
-        <hr>
-      </div>
-      <div class="btn-container">
-        <div *ngFor="let option of options" class="btn" (click)="setOption(option)" [ngClass]="selectedOption == option ? 'active' : 'secondary'">
-          {{option.english}}
-        </div>
-      </div>
-      <table class="data_table">
-        <tr *ngFor="let stock of filteredStocks">
-          <td>{{stock.name}}</td>
-          <td>
-            <progress-bar
-            [valueToAchieve]="maxValue"
-            [currentValue]="stock.value"
-            ></progress-bar>
-          </td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div class="col-sm-12 col-md-6">
-    <div class="content-container">
-      <div class="header">
-        <h2>Historical performance</h2>
-        <hr>
-      </div>
-      <line-chart>
-      </line-chart>
-    </div>
-  </div>
-</div>
+<mat-toolbar>
+  <p>Snapshot</p>
+</mat-toolbar>
+<p>{{selectedFilter | async}}</p>
+<button (click)="onSelectFilterButtonClicked(filter)" *ngFor="let filter of filters$ | async" [style.color]="'white'" (click)="setOption(option)" [ngClass]="selectedOption == option ? 'active' : 'secondary'" mat-button>
+  {{filter}}
+</button>
+<table class="data_table">
+  <tr *ngFor="let stock of portfolio$ | async">
+    <td>{{stock.name}}</td>
+    <td>
+      <progress-bar
+      [valueToAchieve]="maxValue"
+      [currentValue]="stock.value"
+      ></progress-bar>
+    </td>
+  </tr>
+</table>
+<mat-toolbar>
+  <p>Historical performance</p>
+</mat-toolbar>
+<line-chart>
+</line-chart>

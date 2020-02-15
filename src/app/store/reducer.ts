@@ -10,8 +10,11 @@ export interface ApplicationState {
   portfolio: Stock[],
   data: undefined,
   loading: boolean,
-  error: any
+  error: any,
+  selectedFilter: string,
+  filters: string[]
 }
+
 
 export const selectedStock = {
   name: "Visa Inc.",
@@ -51,10 +54,12 @@ export let initialState = {
   selectedSearchTerm: undefined,
   searchTerms: SEARCH_TERMS,
   selectedStock: selectedStock,
-  portfolio: [],
+  portfolio: [selectedStock, selectedStock],
   data: undefined,
   loading: false,
-  error: null
+  error: null,
+  selectedFilter: 'price',
+  filters: ['profitMargin', 'returnOnEquity', 'price']
 }
 
 
@@ -70,6 +75,8 @@ export function appReducer( state = initialState, { type, payload } ) {
       return Object.assign({}, state, {loading: false, error: "Error"})
     case actions.ADD_STOCK_TO_PORTFOLIO:
       return Object.assign({}, state, {portfolio: [...state.portfolio, payload]})
+    case actions.SELECT_FILTER:
+      return Object.assign({}, state, {selectedFilter: payload})
     default:
       return state;
   }

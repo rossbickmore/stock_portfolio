@@ -28,7 +28,7 @@ export class StockPickComponent implements OnInit {
   myControl = new FormControl();
   options: string[] = SYMBOLS
   filteredOptions: Observable<string[]>;
-  
+  portfolio: Observable<Stock[]>;
   constructor(
     private store: Store<ApplicationState>
   ) { }
@@ -38,7 +38,6 @@ export class StockPickComponent implements OnInit {
     this.isLoading$ = this.store.pipe(select(getIsLoading))
     this.portfolio$ = this.store.pipe(select(getPortfolio))
     this.store.pipe(select(getSelectedStock)).subscribe( data => this.selectedStock = data)
-    console.log(this.selectedStock)
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
