@@ -7,12 +7,16 @@ import { ApplicationState } from '../store/reducer'
 import { getSearchTerms, getSelectedStock, getIsLoading, getPortfolio } from '../store/selectors'
 import * as actions from '../store/actions'
 
+import { SYMBOLS } from '../SEARCH_TERMS'
 import { Observable } from 'rxjs'
+import {FormControl} from '@angular/forms';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'stock-pick',
   templateUrl: './stock-pick.component.html',
 })
+
 export class StockPickComponent implements OnInit {
   
   selectedSearchTerm$: Observable<SearchTerm>
@@ -20,6 +24,10 @@ export class StockPickComponent implements OnInit {
   isLoading$: Observable<boolean>
   selectedStock: Stock
   portfolio$: Observable<Stock[]>
+
+  myControl = new FormControl();
+  options: string[] = SYMBOLS
+  filteredOptions: Observable<string[]>;
   
   constructor(
     private store: Store<ApplicationState>
@@ -31,6 +39,15 @@ export class StockPickComponent implements OnInit {
     this.portfolio$ = this.store.pipe(select(getPortfolio))
     this.store.pipe(select(getSelectedStock)).subscribe( data => this.selectedStock = data)
     console.log(this.selectedStock)
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
   }
 
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+  }
 }

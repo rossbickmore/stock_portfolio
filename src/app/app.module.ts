@@ -19,6 +19,11 @@ import {MatTabsModule} from '@angular/material/tabs'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card'
+import {MatButtonModule} from '@angular/material/button';
+import {MatAutocompleteModule} from '@angular/material/autocomplete'
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MatInputModule } from '@angular/material/input'
 @NgModule({
   imports: [
     BrowserModule,
@@ -28,7 +33,13 @@ import {MatCardModule} from '@angular/material/card'
     MatTabsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   declarations: [
     AppComponent,

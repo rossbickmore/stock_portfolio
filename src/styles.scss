@@ -5,15 +5,16 @@ hr {
   border: 1px solid #e6e6e6;
   margin: 0 16;
 }
-html, body { height: 100%; }
 
-html {
+body {
   font-family: 'Nunito';
   background-size: cover;
+  display: flex;
+  justify-content: center;
   margin: 0;
-  padding: 0;
-  font-size: 14px;
-  line-height: 25px;
+  color: #424242;
+  height: 100%;
+  line-height: 24px;
 }
 
 h1, h2, h3 {
@@ -26,10 +27,11 @@ h1, h2, h3 {
 }
 
 .page-container {
-  width: 80%;
-  margin: auto 10%;
+  max-width: 800px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #424242;
 }
 
 
@@ -193,6 +195,10 @@ a:visited {
   border-collapse: collapse;
 }
 
-.mat-tab-label-content {
-  color: black;
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  margin-left: 16px;
 }
+

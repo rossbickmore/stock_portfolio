@@ -1,31 +1,18 @@
-<div class="row">
-  <div class="col-sm-12 col-md-6">
-    <stock-display
-    [stock]="selectedStock"    
-    [isLoading]="isLoading$ | async"
-    >
-    </stock-display
-    >
-  </div>
-  <div class="col-sm-12 col-md-6">
-    <div class="content-container">
-      <div class="header">
-        <h2>Pick your stocks</h2>
-        <hr />
-      </div>
-      <div class="btn-container">
-        <div
-          *ngFor="let searchTerm of searchTerms$ | async"
-          (click)="selectSearchTerm(searchTerm)"
-          class="btn"
-        >
-          {{ searchTerm.name }}
-        </div>
-      </div>
-      <portfolio-display 
-        [portfolio$]="portfolio$"
-      >
-      </portfolio-display>
-    </div>
-  </div>
-</div>
+<mat-form-field class="example-form">
+  <input type="text"
+    placeholder="Pick one"
+    aria-label="Number"
+    [formControl]="myControl"
+    [matAutocomplete]="auto"
+    matInput>
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
+  </mat-form-field>
+<stock-display
+  [stock]="selectedStock"    
+  [isLoading]="isLoading$ | async"
+>
+</stock-display>

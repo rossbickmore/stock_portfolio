@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, Input, ChangeDetectionStrategy } from "@angular/core";
 
 import { select, Store } from '@ngrx/store';
 import { ApplicationState } from '../../store/reducer'
@@ -11,7 +11,7 @@ import * as actions from '../../store/actions'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StockDisplayComponent implements OnInit {
-  constructor(private store: Store<ApplicationState>, private cdr: ChangeDetectorRef) {}
+  constructor(private store: Store<ApplicationState>) {}
   @Input() stock;
   @Input() isLoading: boolean;
   ngOnInit() {
