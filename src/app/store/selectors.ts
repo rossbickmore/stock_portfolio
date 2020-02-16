@@ -34,6 +34,7 @@ export const getData = createSelector(
   config => config.data
 );
 
+
 export const getPortfolio = createSelector(
   getApplicationState,
   state => state.portfolio

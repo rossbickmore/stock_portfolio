@@ -1,19 +1,11 @@
-<mat-form-field class="example-form">
-  <input type="text"
-    placeholder="Pick one"
-    aria-label="Number"
-    [formControl]="myControl"
-    [matAutocomplete]="auto"
-    [style.color]="'white'"
-    matInput>
-  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-      {{option}}
-    </mat-option>
-  </mat-autocomplete>
-  </mat-form-field>
+<mat-card>
+  <button *ngFor="let searchTerm of searchTerms$ | async" class="btn" (click)="onSelectStockButtonclicked(searchTerm)"
+  [class.selected]="searchTerm === (selectedSearchTerm$ | async)"  mat-button>
+    {{searchTerm.name}}
+  </button>
+</mat-card>
 <stock-display
-  [stock]="selectedStock"    
+  [stock]="selectedStock$ | async"    
   [isLoading]="isLoading$ | async"
 >
 </stock-display>

@@ -34,7 +34,7 @@ h1, h2, h3 {
   background-color: rgb(172, 169, 169);
   color: black;
   border-radius: 0px !important;
-  margin-right: 12px !important;
+  margin: 8px 4px !important;
 }
 
 .btn:hover {
@@ -46,9 +46,8 @@ h1, h2, h3 {
 }
 
 .example-form {
-  min-width: 150px;
-  max-width: 500px;
   margin-left: 16px;
+  width: 50%
 }
 .datatable {
   width: 100%;
@@ -61,6 +60,10 @@ tr, td {
 
 tr {
   text-align: center;
+}
+
+.chartjs-size-monitor {
+  color: white;
 }
 // media queries
 

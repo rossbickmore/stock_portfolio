@@ -1,7 +1,7 @@
 import * as actions from './actions'
 import { SearchTerm } from '../models/search-term'
 import { Stock } from '../models/stock'
-import { SEARCH_TERMS } from '../SEARCH_TERMS'
+import {SYMBOLS, SEARCH_TERMS} from '../SEARCH_TERMS'
 
 export interface ApplicationState {
   selectedSearchTerm: SearchTerm,
@@ -61,7 +61,7 @@ export const selectedStock = {
 export let initialState = {
   selectedSearchTerm: undefined,
   searchTerms: SEARCH_TERMS,
-  selectedStock: selectedStock,
+  selectedStock: undefined,
   portfolio: [selectedStock, {...selectedStock, price: 100, profitMargin: 0.2, returnOnEquity: 0.8}],
   config: {
     data: undefined,
@@ -83,11 +83,11 @@ export function appReducer( state = initialState, { type, payload } ) {
   switch( type ) {
     case actions.SELECT_SEARCH_TERM:
       return {...state, selectedSearchTerm: payload}
-    case actions.GET_STOCK:
+    case actions.LOAD_CONFIG:
       return {...state, config: {loading: true, data: undefined, error: null } }
-    case actions.GET_STOCK_SUCCESS:
+    case actions.LOAD_CONFIG_SUCCESS:
       return {...state, config: {loading: false, data: payload,  error: null }}
-    case actions.GET_STOCK_ERROR:
+    case actions.LOAD_CONFIG_ERROR:
       return {...state, config: {loading: false, data: undefined,  error: 'error' }}
     case actions.ADD_STOCK_TO_PORTFOLIO:
       return {...state, portfolio: [...state.portfolio, payload] }
@@ -95,7 +95,25 @@ export function appReducer( state = initialState, { type, payload } ) {
       return {...state, progressBar: {...state.progressBar, selectedFilter: payload}}
     case actions.SELECT_LINE_CHART_FILTER:
       return {...state, lineChart : {...state.lineChart, selectedFilter: payload}}
+    case actions.SET_STOCK:
+      return {
+        ...state,
+        selectedStock: {
+          name: payload.quoteType.shortName,
+          symbol: payload.quoteType.symbol,
+          price: payload.summaryDetail.previousClose.raw,
+          profitMargin: payload.financialData.profitMargins.raw,
+          returnOnEquity: payload.financialData.returnOnEquity.raw,
+          sector: payload.summaryProfile.sector,
+          industry: payload.summaryProfile.industry,
+          description: payload.summaryProfile.longBusinessSummary,
+          recommendation: payload.financialData.recommendationKey,
+          website: payload.summaryProfile.website,
+          earnings: payload.earnings.financialsChart.yearly
+        }
+      }
     default:
       return state;
   }
 }
+ 

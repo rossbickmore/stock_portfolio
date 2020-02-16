@@ -4,13 +4,11 @@ import { SearchTerm } from '../models/search-term'
 
 import { select, Store } from '@ngrx/store';
 import { ApplicationState } from '../store/reducer'
-import { getSearchTerms, getSelectedStock, getIsLoading, getPortfolio } from '../store/selectors'
+import { getSearchTerms, getSelectedStock, getIsLoading, getPortfolio, getSelectedSearchTerm, getData, getApplicationState   } from '../store/selectors'
 import * as actions from '../store/actions'
 
-import { SYMBOLS } from '../SEARCH_TERMS'
 import { Observable } from 'rxjs'
 import {FormControl} from '@angular/forms';
-import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'stock-pick',
@@ -22,31 +20,26 @@ export class StockPickComponent implements OnInit {
   selectedSearchTerm$: Observable<SearchTerm>
   searchTerms$: Observable<SearchTerm[]>
   isLoading$: Observable<boolean>
-  selectedStock: Stock
+  selectedStock$: Observable<Stock>
   portfolio$: Observable<Stock[]>
-
   myControl = new FormControl();
-  options: string[] = SYMBOLS
-  filteredOptions: Observable<string[]>;
+  filteredOptions$: Observable<string[]>;
   portfolio: Observable<Stock[]>;
+
   constructor(
     private store: Store<ApplicationState>
   ) { }
 
   ngOnInit() {
     this.searchTerms$ = this.store.pipe(select(getSearchTerms))
+    this.selectedSearchTerm$ = this.store.pipe(select(getSelectedSearchTerm))
     this.isLoading$ = this.store.pipe(select(getIsLoading))
     this.portfolio$ = this.store.pipe(select(getPortfolio))
-    this.store.pipe(select(getSelectedStock)).subscribe( data => this.selectedStock = data)
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
+    this.selectedStock$ = this.store.pipe(select(getSelectedStock))
   }
 
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+  onSelectStockButtonclicked(searchTerm) {
+    this.store.dispatch( new actions.selectSearchTerm(searchTerm.symbol))
+    this.store.dispatch( new actions.loadConfig())
   }
 }
