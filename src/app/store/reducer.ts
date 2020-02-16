@@ -90,7 +90,7 @@ export function appReducer( state = initialState, { type, payload } ) {
     case actions.GET_STOCK_ERROR:
       return {...state, config: {loading: false, data: undefined,  error: 'error' }}
     case actions.ADD_STOCK_TO_PORTFOLIO:
-      return {...state, portfolio: payload}
+      return {...state, portfolio: [...state.portfolio, payload] }
     case actions.SELECT_PROGRESS_BAR_FILTER:
       return {...state, progressBar: {...state.progressBar, selectedFilter: payload}}
     case actions.SELECT_LINE_CHART_FILTER:

@@ -1,52 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { ChartDataSets, ChartOptions } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
-import { DataService} from '../../services/data.service'
+import { Component, OnInit, Input } from '@angular/core';
+
 @Component({
   selector: 'line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.scss']
 })
 export class LineChartComponent implements OnInit {
-
-  lineChartPlugins = [];
-  lineChartType = 'line';
-  lineChartLegend = true;
-
+  
   constructor(
-    private stockService: DataService
   ) { }
-  options = ['earnings', 'revenue']
-  selectedOption = this.options[0]
+  @Input() lineChartData: any[]
+  @Input() lineChartLabels: string[]
 
-  lineChartData: ChartDataSets[] = []
-  lineChartLabels: Label[] = []
   ngOnInit() {
+    console.log(this.lineChartData, 'data')
+    console.log(this.lineChartLabels, 'labels')
   }
 
-  createChartData(option, array) {
-    // get chart labels
-    this.lineChartData = []
-    this.lineChartLabels = []
-    array[0].earnings.forEach( dataPoint => {
-      this.lineChartLabels.push(dataPoint.date)
-    })
-    // get data sets
-    array.forEach( stock => {
-      let obj = {data: [], label: stock.name}
-      stock.earnings.forEach( dataPoint => {
-        obj.data.push(dataPoint[option].raw / 1000000000)
-      })
-      this.lineChartData.push(obj)
-    })
-  }
-
-  lineChartOptions = {
-    responsive: true,
+  chartOptions = {
+    responsive: true
   };
-
-  setOption(option) {
-    this.selectedOption = option
-  }
-
 }

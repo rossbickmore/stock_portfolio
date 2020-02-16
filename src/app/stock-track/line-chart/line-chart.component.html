@@ -1,16 +1,12 @@
-<div class="btn-container">
-  <button *ngFor="let option of options" (click)="setOption(option)" [ngClass]="selectedOption == option ? 'active' : 'secondary'" mat-button>
-    {{option}} ($ - billion)
-  </button>
-</div>
-<div class="chart-wrapper">
-  <!-- <canvas baseChart 
-      [datasets]="lineChartData" 
-      [labels]="lineChartLabels" 
-      [options]="lineChartOptions"
-      [colors]="lineChartColors" 
-      [legend]="lineChartLegend" 
-      [chartType]="lineChartType" 
-      [plugins]="lineChartPlugins">
-  </canvas> -->
+<div>
+  <canvas
+      baseChart
+      [chartType]="'line'"
+      [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [options]="chartOptions"
+      [legend]="true"
+      [colors]="myColors"
+  >
+  </canvas>
 </div>

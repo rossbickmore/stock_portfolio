@@ -3,8 +3,8 @@
 </mat-toolbar>
 <mat-card>
   <p>Filter by:</p>
-  <button (click)="onSelectFilterButtonClicked(filter)" *ngFor="let filter of filters$ | async" class="btn" [class.selected]="filter === (selectedFilter | async)" mat-button>
-    {{filter}}
+  <button (click)="onSelectFilterButtonClicked(filter, 'progressBar')" *ngFor="let filter of progressBarFilters$ | async" class="btn" [class.selected]="filter === (progressBarSelectedFilter | async)" mat-button>
+    {{filter | uppercase}}
   </button>
   <table class="datatable">
     <tr>
@@ -25,5 +25,15 @@
 <mat-toolbar>
   <p>Historical performance</p>
 </mat-toolbar>
-<line-chart>
-</line-chart>
+<mat-card>
+  <p>Filter by:</p>
+  <button (click)="onSelectFilterButtonClicked(filter, 'lineChart')" *ngFor="let filter of lineChartFilters$ | async" class="btn" [class.selected]="filter === (lineChartSelectedFilter | async)" mat-button>
+    {{filter | uppercase}}
+  </button>
+  <line-chart
+    [lineChartData]="lineChartData$ | async"
+    [lineChartLabels]="lineChartLabels$ | async"
+  >
+  </line-chart
+  >
+</mat-card>

@@ -37,10 +37,11 @@ export class selectProgressBarFilter {
   constructor(public payload: string) {}
 }
 
-export class selectLineChartFilter {
+export class selecLineChartFilter {
   readonly type = SELECT_LINE_CHART_FILTER
   constructor(public payload: string) {}
 }
 
 
-export type All = getStock | selectSearchTerm | getStockSuccess | getStockError | addStockToPortfolio | selectProgressBarFilter | selectLineChartFilter;
+
+export type All = getStock | selectSearchTerm | getStockSuccess | getStockError | addStockToPortfolio | selectProgressBarFilter | selecLineChartFilter;

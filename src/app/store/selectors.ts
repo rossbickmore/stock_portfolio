@@ -62,3 +62,35 @@ export const getProgressBarValues = createSelector(
   })
 );
 
+export const getLineChart = createSelector(
+  getApplicationState,
+  state => state.lineChart
+);
+
+export const getLineChartSelectedFilter= createSelector(
+  getLineChart,
+  lineChart => lineChart.selectedFilter
+);
+
+export const getLineChartFilters = createSelector(
+  getLineChart,
+  lineChart => lineChart.filters
+);
+
+export const getLineChartData = createSelector(
+  getPortfolio,
+  getLineChartSelectedFilter,
+  (portfolio, selectedFilter) => portfolio.map( (stock) => {
+    return { 
+      label: stock.name, 
+      data: stock.earnings.map( (earnings) => earnings[selectedFilter].raw / 1_000_000_000),
+    }
+  })
+);
+
+export const getLineChartLabels = createSelector(
+  getPortfolio,
+  (portfolio) => portfolio.map( (stock) => {
+    return stock.earnings.map( (earnings) => earnings.date)
+  })[0]
+);
